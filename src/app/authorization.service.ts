@@ -10,4 +10,8 @@ export class AuthorizationsService {
     public authorization(login:string, password:string) {
         return this.http.get('http://localhost:8080/authorization/${login}${password}');
     }
+
+    public registration(login:string, password:string) {
+        return this.http.get('http://localhost:8080/registration/${login}${password}');
+    }
 }    

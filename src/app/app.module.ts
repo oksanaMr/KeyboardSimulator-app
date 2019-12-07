@@ -7,11 +7,13 @@ import { AuthorizationComponent } from './authorization/authorization';
 import { AuthorizationsService } from './authorization.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './registration/registration';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
