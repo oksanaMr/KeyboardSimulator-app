@@ -21,8 +21,9 @@ export class RegistrationComponent{
     register(){
         this.loading = true;
         this.authorizationsService.registration(this.loginu, this.passwordu).subscribe(
-            (data : User) => {
+            data => {
                 this.router.navigate(['/profile']);
+                //this.router.navigate(['profile/data']);
             },
             error => {
                 this.loading = false;

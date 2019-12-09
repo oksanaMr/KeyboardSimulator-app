@@ -21,10 +21,11 @@ export class AuthorizationComponent{
     autho(){
         this.loading = true;
         this.authorizationsService.authorization(this.loginu, this.passwordu).subscribe(
-            (data : User) => {
-                if (data.type_of_access == "admin")
+            data => {
+                if (data == "1") //В базе данных идентификатор адинистратора должен быть равен 1
                     this.router.navigate(['/exercise']);
-                else this.router.navigate(['/profile']);
+                else this.router.navigate(['/profile']); //У пользователя идентификатор не равен 1
+                //else this.router.navigate(['/profile/data']);
             },
             error => {
                 this.loading = false;

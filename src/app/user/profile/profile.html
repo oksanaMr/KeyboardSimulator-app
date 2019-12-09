@@ -1,0 +1,50 @@
+<div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="profile">Профиль <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="exercise">Упражения</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="statistics">Статистика</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row align-items-center" style="height: 130px">
+            <div class="mx-auto" >
+                <h3>Добро пожаловать,!</h3>
+            </div>
+        </div>
+        <div class="row align-items-center" style="height: 80px">
+            <div class="mx-auto" >
+                <h5>Уровень подготовки</h5>
+            </div>
+        </div>
+        <div class="row align-items-center pb-5">
+            <div class="col-md-2 mx-auto">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <mat-radio-group
+                            aria-labelledby="example-radio-group-label"
+                            class="example-radio-group"
+                            [(ngModel)]="selectLevel">
+                            <mat-radio-button class="example-radio-button" *ngFor="let level of levels" [value]="level" change="changeLevel(level)">
+                                {{level}} 
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+            <a [routerLink]="['/dataChange']" class="btn btn-primary mr-4">Изменить данные</a>
+            <!--a [routerLink]="['/dataChange','user.id']" [queryParams]="{'loginu':'user.login', 'passwordu': 'user.password'}" class="btn btn-primary mr-4">Изменить данные</a>-->
+            <a [routerLink]="['/']" class="btn btn-primary">Выход</a>
+        </div>
+    </div>
+</div>
