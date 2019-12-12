@@ -38,7 +38,7 @@ export class AuthorizationsService {
     }
 
     public getUser(id: string) {
-        return this.http.get<User>(`${BASE_PATH} / getUser / ${id}`);
+        return this.http.get<User>(`${BASE_PATH}/getUser/${id}`);
     }
 
     public changeLevel(user: string[]) {
