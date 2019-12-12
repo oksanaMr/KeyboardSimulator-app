@@ -1,5 +1,5 @@
 import { Observable, interval, Subscription, fromEvent, timer, combineLatest, of } from 'rxjs';
-import { shareReplay, takeWhile, switchMap, mapTo, scan, startWith, map, withLatestFrom, switchMapTo, tap } from 'rxjs/operators';
+import { shareReplay, takeWhile, switchMap, mapTo, scan, startWith, map, withLatestFrom, switchMapTo, tap, mergeMap } from 'rxjs/operators';
 import { OnInit, OnDestroy, ViewEncapsulation, Component, HostListener } from '@angular/core';
 import Keyboard from 'simple-keyboard';
 
@@ -77,6 +77,9 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
             // } as Exercise)),
             switchMap(id => this.exerciseService.getExercise(id)),
             tap(exercise => this.exercise = exercise),
+            mergeMap(exercise => this.exerciseService.getDiff(exercise.diff_id)),
+            tap(diff => this.exercise.dificulty_lvl = diff),
+            map(() => this.exercise),
             map(exercise => ({
                 text: exercise.textF + exercise.textE,
                 maxMistakes: exercise.dificulty_lvl.max_num_of_mistakes,
