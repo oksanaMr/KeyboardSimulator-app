@@ -28,4 +28,4 @@ export class AuthorizationsService {
         const body = {id: id, login: login, passwor: password}
         return this.http.post('http://localhost:8080/registration/',body);
     }
-}    
+}
