@@ -14,12 +14,20 @@ export class ProfileComponent implements OnInit {
     levels: string[] = ['Слабый', 'Средний', 'Продвинутый']
     selectLevel = 'Слабый';
 
+    diffIdMap = {
+        1: 'Слабый',
+        2: 'Средний',
+        3: 'Продвинутый'
+    };
+
     constructor(
         public authorizationsService: AuthorizationsService,
     ) { }
 
     ngOnInit() {
-        this.selectLevel = this.authorizationsService.currentUser.diff_id;
+        this.authorizationsService.currentUser$.subscribe(user => {
+            this.selectLevel = this.diffIdMap[user.diff_id];
+        });
     }
 
     changeLevel(level: string) {

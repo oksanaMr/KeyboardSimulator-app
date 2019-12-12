@@ -16,14 +16,14 @@
     </nav>
     <div class="container">
         <div class="row align-items-center mt-4">
-            <div class="mx-auto" >
+            <div class="mx-auto">
                 <h5>Уровень подготовки:</h5>
             </div>
         </div>
         <div class="row align-items-center mt-4 exeList">
             <div class="mx-auto">
                 <mat-list role="list">
-                    <mat-list-item role="listitem" *ngFor="let x of exerciseList;">
+                    <mat-list-item role="listitem" *ngFor="let x of (exerciseList$| async) as exerciseList;">
                         <mat-radio-button [value]="x.id" name="fieldName" ngDefaultControl [(ngModel)]="exercise">
                             Упражение {{x.id}}
                         </mat-radio-button>

@@ -4,6 +4,8 @@ import { User } from 'src/app/user';
 import { ExerciseService } from 'src/app/exercise.service';
 import { Exercise } from '@app/model/exercise';
 import { AuthorizationsService } from 'src/app/authorization.service';
+import { Observable } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-exercise',
@@ -13,7 +15,7 @@ import { AuthorizationsService } from 'src/app/authorization.service';
 
 export class ExerciseComponent implements OnInit {
     user: User;
-    exerciseList: Exercise[];
+    exerciseList$: Observable<Exercise[]>;
     exercise = "";
 
     constructor(
@@ -23,7 +25,9 @@ export class ExerciseComponent implements OnInit {
 
 
     ngOnInit() {
-        this.exerciseService.getExerciseList(this.userService.currentUser.diff_id).subscribe(exercies => this.exerciseList = exercies);
+        this.exerciseList$ = this.userService.currentUser$.pipe(
+            mergeMap(user => this.exerciseService.getExerciseList(user.diff_id))
+        );
     }
 
     selectExercise() {

@@ -9,18 +9,17 @@ const BASE_PATH = 'http://localhost:8080/userKS';
 @Injectable()
 export class AuthorizationsService {
 
-    currentUser: User;
+    currentUser$: Observable<User>;
 
     constructor(private http: HttpClient) { }
 
     public authorization(login: string, password: string) {
         const userRequest = this.http.get(`${BASE_PATH}/authorization/${login}/${password}`).pipe(shareReplay(1));
 
-        userRequest.pipe(
+        this.currentUser$ = userRequest.pipe(
             mergeMap(id => this.getUser(`${id}`)),
-        ).subscribe(user => {
-            this.currentUser = user;
-        });
+            shareReplay(3)
+        );
 
         return userRequest;
     }
@@ -28,11 +27,10 @@ export class AuthorizationsService {
     public registration(login: string, password: string) {
         const userRequest = this.http.get(`${BASE_PATH}/registration/${login}/${password}`);
 
-        userRequest.pipe(
+        this.currentUser$ = userRequest.pipe(
             mergeMap(id => this.getUser(`${id}`)),
-        ).subscribe(user => {
-            this.currentUser = user;
-        });
+            shareReplay(3)
+        );
 
         return userRequest;
     }
