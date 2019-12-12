@@ -9,26 +9,27 @@ import { User } from '../user';
     styleUrls: ['./authorization.css']
 })
 
-export class AuthorizationComponent{
-    private loginu:"";
-    private passwordu:"";
-    private loading= false;
+export class AuthorizationComponent {
+    private loginu: "";
+    private passwordu: "";
+    private loading = false;
 
     constructor(
         private authorizationsService: AuthorizationsService,
-        private router: Router){}
+        private router: Router) { }
 
-    autho(){
+    autho() {
         this.loading = true;
         this.authorizationsService.authorization(this.loginu, this.passwordu).subscribe(
-            data => {
-                if (data == "1") //В базе данных идентификатор адинистратора должен быть равен 1
-                    this.router.navigate(['/exercise']);
-                else this.router.navigate(['/profile']); //У пользователя идентификатор не равен 1
-                //else this.router.navigate(['/profile/data']);
+            id => {
+                //В базе данных идентификатор адинистратора должен быть равен 1
+                if (id == "1") {
+                    this.router.navigate(['/exercise', id]);
+                }
+                else { this.router.navigate(['/profile', id]); }//У пользователя идентификатор не равен 1
             },
             error => {
                 this.loading = false;
-        });
+            });
     }
 }

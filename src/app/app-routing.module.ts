@@ -12,8 +12,8 @@ import { DoExerciseComponent } from './user/doExercise/doExercise';
 const routes: Routes = [
   { path: '', component: AuthorizationComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'exercise', component: ExerciseComponent },
+  { path: 'profile/:id', component: ProfileComponent },
+  { path: 'exercise/:id', component: ExerciseComponent },
   { path: 'do-exercise/:id', component: DoExerciseComponent },
   { path: 'dataChange', component: DataChangeComponent },
   { path: 'statistics', component: StatisticsComponent }

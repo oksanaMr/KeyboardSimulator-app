@@ -21,11 +21,15 @@ export class ProfileComponent implements OnInit {
     };
 
     constructor(
+        public router: ActivatedRoute,
         public authorizationsService: AuthorizationsService,
     ) { }
 
     ngOnInit() {
-        this.authorizationsService.currentUser$.subscribe(user => {
+        const userId = this.router.snapshot.params.id;
+
+        this.authorizationsService.getUser(userId).subscribe(user => {
+            this.user = user;
             this.selectLevel = this.diffIdMap[user.diff_id];
         });
     }
