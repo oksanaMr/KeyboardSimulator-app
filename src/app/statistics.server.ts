@@ -8,7 +8,7 @@ export class StatisticsService {
 
     constructor(private http: HttpClient) { }
 
-    public getStatisticsUser(id:string) {
+    public getStatisticsUser(id: string) {
         return this.http.get<UserStatistics[]>('http://localhost:8080/getExerciseList/${id}');
     }
 

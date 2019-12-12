@@ -14,11 +14,13 @@ import { ExerciseComponent } from './user/exercise/exercise';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import { MatRadioModule } from '@angular/material';
+import { MatRadioModule, MatDialogModule } from '@angular/material';
 import { DataChangeComponent } from './user/dataChange/dataChange';
 import { StatisticsService } from './statistics.server';
-import { MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { StatisticsComponent } from './user/statistics/statistics';
+import { DoExerciseComponent } from './user/doExercise/doExercise';
+import { TrainResultComponent } from './user/doExercise/train-result/train-result.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,10 @@ import { StatisticsComponent } from './user/statistics/statistics';
     RegistrationComponent,
     ProfileComponent,
     ExerciseComponent,
+    DoExerciseComponent,
     DataChangeComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    TrainResultComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +42,12 @@ import { StatisticsComponent } from './user/statistics/statistics';
     BrowserAnimationsModule,
     MatSelectModule,
     MatListModule,
+    MatDialogModule,
     MatRadioModule,
     MatTableModule
+  ],
+  entryComponents: [
+    TrainResultComponent
   ],
   providers: [AuthorizationsService, ExerciseService, StatisticsService],
   bootstrap: [AppComponent]

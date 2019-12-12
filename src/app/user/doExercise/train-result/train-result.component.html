@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h4 class="modal-title">Статистика</h4>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-8">
+      Время выполнения:
+    </div>
+    <div class="col">
+      {{statistic.time}} секунд
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      Количество ошибок:
+    </div>
+    <div class="col">
+      {{statistic.errors}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      Скорость:
+    </div>
+    <div class="col">
+      {{statistic.average}} зн / мин
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn mr-auto btn-outline" (click)="handleToStatistic()">
+    К статистике
+  </button>
+  <button (click)="handleOkClick()" class="btn btn-primary">
+    Повторить!
+  </button>
+</div>

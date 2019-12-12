@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="profile">Профиль</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="exercise">Упражения</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="statistics">Статистика <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="train--container d-flex flex-column">
+    <div class="main--container container-fluid row no-gutters">
+        <div class="sample--container d-flex align-items-center flex-column justify-content-center">
+
+            <div class="text-keyboard--container d-flex flex-column">
+                <div class="w-100 statistic--container row">
+                    <div class="col py-2">
+                        <div class="font-weight-bold">
+                            Cкорость
+                        </div>
+                        <div>
+                            {{(average$ | async) || 0}} зн / мин
+                        </div>
+                    </div>
+                    <div class="col py-2">
+                        <div class="font-weight-bold">
+                            Время
+                        </div>
+                        <div>
+                            {{(secondCounter$ | async) || 0}} секунд
+                        </div>
+                    </div>
+                    <div class="col py-2">
+                        <div class="font-weight-bold">
+                            Ошибок
+                        </div>
+                        <div>
+                            {{ keyboardTrain.errors || 0 }} / {{keyboardTrain.maxErrors}}
+                        </div>
+                    </div>
+                </div>
+                <div class="text--container py-3 px-2"
+                    [class.has-errors]="keyboardTrain.errorIndex != -1 || keyboardTrain.timeoutError">
+                    <span *ngFor="let letter of keyboardTrain.enteredPart" class="entered-symbols"
+                        [class.px-2]="letter == ' '">
+                        {{ letter }}
+                    </span>
+                    <span *ngFor="let letter of keyboardTrain.tail; let i = index"
+                        [class.is-error-letter]="i === keyboardTrain.errorIndex" [class.px-2]="letter == ' '">
+                        {{ letter }}
+                    </span>
+                    <div (click)="showKeyboard = !showKeyboard" class="keyboard--icon"></div>
+                </div>
+                <div class="keyboard--container mt-auto">
+                    <div [class.d-none]="!showKeyboard" class="simple-keyboard "></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf=!isStarted (click)="handleStartClick()"
+        class="button d-flex justify-content-center align-items-center btn btn-primary">
+        Начать!
+    </div>
+    <div *ngIf="isStarted" (click)="handleStopClick()"
+        class="button d-flex justify-content-center align-items-center btn-danger">
+        Остановить
+    </div>
+</div>

@@ -6,15 +6,17 @@ import { ProfileComponent } from './user/profile/profile';
 import { ExerciseComponent } from './user/exercise/exercise';
 import { DataChangeComponent } from './user/dataChange/dataChange';
 import { StatisticsComponent } from './user/statistics/statistics';
+import { DoExerciseComponent } from './user/doExercise/doExercise';
 
 
 const routes: Routes = [
-  { path: '', component: AuthorizationComponent},
-  { path: 'registration', component: RegistrationComponent},
-  { path: 'profile', component: ProfileComponent},
-  { path: 'exercise', component: ExerciseComponent},
-  { path: 'dataChange', component: DataChangeComponent},
-  { path: 'statistics', component: StatisticsComponent}
+  { path: '', component: AuthorizationComponent },
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'exercise', component: ExerciseComponent },
+  { path: 'do-exercise/:id', component: DoExerciseComponent },
+  { path: 'dataChange', component: DataChangeComponent },
+  { path: 'statistics', component: StatisticsComponent }
 ];
 
 @NgModule({

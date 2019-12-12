@@ -1,0 +1,54 @@
+$gray: #e3e3e3;
+$highlight-color: #9ab4d0;
+
+.train--container {
+  min-height: calc(100vh - 56px);
+  .main--container {
+    .sample--container {
+      flex: 1;
+    }
+    flex: 1;
+    .text-keyboard--container {
+      width: 80%;
+      height: 90%;
+      .statistic--container > * {
+        text-align: center;
+      }
+      .text--container {
+        position: relative;
+        font-size: 20px;
+        flex: 1;
+        border: 1px solid $gray;
+        border-radius: 10px;
+        &.has-errors {
+          border: 2px solid red;
+        }
+        .is-error-letter {
+          font-size: 20px;
+          color: red;
+          font-weight: bold;
+        }
+        .entered-symbols {
+          background-color: $gray;
+          color: $highlight-color;
+        }
+      }
+    }
+  }
+  .button {
+    width: 150px;
+    height: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+  }
+}
+.keyboard--icon {
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  bottom: 20px;
+  width: 40px;
+  height: 40px;
+  background-image: url("../../../assets/keyboard.svg");
+}
