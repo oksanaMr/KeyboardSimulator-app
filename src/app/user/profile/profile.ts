@@ -4,30 +4,27 @@ import { User } from 'src/app/user';
 import { AuthorizationsService } from 'src/app/authorization.service';
 
 @Component({
-selector: 'app-profile',
-templateUrl: './profile.html',
-styleUrls: ['./profile.css']
+    selector: 'app-profile',
+    templateUrl: './profile.html',
+    styleUrls: ['./profile.css']
 })
 
-export class ProfileComponent{
-    user : User;
-    levels: string[] = ['Слабый','Средний','Продвинутый']
+export class ProfileComponent {
+    user: User;
+    levels: string[] = ['Слабый', 'Средний', 'Продвинутый']
     selectLevel = 'Слабый';
 
     constructor(
-        private router: Router,
-        private authorizationsService: AuthorizationsService,
-        private activateRoute: ActivatedRoute){}
+        public authorizationsService: AuthorizationsService,
+    ) { }
 
-    ngOnInit(){
-        //const id = this.activateRoute.snapshot.params['id'];
-        //this.authorizationsService.getUser(id).subscribe(user => this.user = user);
-        //this.selectLevel = this.user.id_level;
-    }    
+    ngOnInit() {
+        this.selectLevel = this.authorizationsService.currentUser.id_level;
+    }
 
-    changeLevel(level:string){
+    changeLevel(level: string) {
         this.user.id_level = level;
-        this.authorizationsService.changeLevel([this.user.id,this.user.id_level]);
-    }    
+        this.authorizationsService.changeLevel([this.user.id, this.user.id_level]);
+    }
 
 }

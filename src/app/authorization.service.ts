@@ -1,25 +1,44 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { Observable } from 'rxjs';
+import { tap, shareReplay, mergeMap } from 'rxjs/operators';
 
 const BASE_PATH = 'http://localhost:8080/userKS';
 
 @Injectable()
 export class AuthorizationsService {
 
+    currentUser: User;
 
     constructor(private http: HttpClient) { }
 
     public authorization(login: string, password: string) {
-        return this.http.get(`${BASE_PATH}/authorization/${login}/${password}`);
+        const userRequest = this.http.get(`${BASE_PATH}/authorization/${login}/${password}`).pipe(shareReplay(1));
+
+        userRequest.pipe(
+            mergeMap(id => this.getUser(`${id}`)),
+        ).subscribe(user => {
+            this.currentUser = user;
+        });
+
+        return userRequest;
     }
 
     public registration(login: string, password: string) {
-        return this.http.get(`${BASE_PATH}/registration/${login}/${password}`);
+        const userRequest = this.http.get(`${BASE_PATH}/registration/${login}/${password}`);
+
+        userRequest.pipe(
+            mergeMap(id => this.getUser(`${id}`)),
+        ).subscribe(user => {
+            this.currentUser = user;
+        });
+
+        return userRequest;
     }
 
     public getUser(id: string) {
-        return this.http.get<User>(`${BASE_PATH}/getUser/${id}`);
+        return this.http.get<User>(`${BASE_PATH} / getUser / ${id}`);
     }
 
     public changeLevel(user: string[]) {

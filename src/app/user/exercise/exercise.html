@@ -23,9 +23,9 @@
         <div class="row align-items-center mt-4 exeList">
             <div class="mx-auto">
                 <mat-list role="list">
-                    <mat-list-item role="listitem" *ngFor="let x of exerciseList; let i = index">
-                        <mat-radio-button [value]="i" name="fieldName" ngDefaultControl [(ngModel)]="exercise">
-                            Упражение {{x}}
+                    <mat-list-item role="listitem" *ngFor="let x of exerciseList;">
+                        <mat-radio-button [value]="x.id" name="fieldName" ngDefaultControl [(ngModel)]="exercise">
+                            Упражение {{x.id}}
                         </mat-radio-button>
                     </mat-list-item>
                 </mat-list>

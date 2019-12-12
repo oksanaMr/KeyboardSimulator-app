@@ -62,21 +62,20 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
         this.router.paramMap.pipe(
             map(paramMap => paramMap.get('id')),
             tap(console.log),
-            switchMap(id => of({
-                id: 1,
-                dificulty_lvl: {
-                    id: 1,
-                    max_length: 2,
-                    max_num_of_mistakes: 5,
-                    min_length: 1,
-                    pressing_time: 10, // рассчитываю, что это секунды
-                    title: ''
-                },
-                textF: 'съешь еще этих мягких ',
-                textE: ' французских булок да выпей чаю'
-            } as Exercise)),
-            // когда будет готов сервер, раскоментируйте и закомент. строчку выше
-            // switchMap(id => this.exerciseService.getExercise(id)),
+            // switchMap(id => of({
+            //     id: 1,
+            //     dificulty_lvl: {
+            //         id: 1,
+            //         max_length: 2,
+            //         max_num_of_mistakes: 5,
+            //         min_length: 1,
+            //         pressing_time: 10, // рассчитываю, что это секунды
+            //         title: ''
+            //     },
+            //     textF: 'съешь еще этих мягких ',
+            //     textE: ' французских булок да выпей чаю'
+            // } as Exercise)),
+            switchMap(id => this.exerciseService.getExercise(id)),
             tap(exercise => this.exercise = exercise),
             map(exercise => ({
                 text: exercise.textF + exercise.textE,
