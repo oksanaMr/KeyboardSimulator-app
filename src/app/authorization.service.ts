@@ -11,11 +11,11 @@ export class AuthorizationsService {
     constructor(private http: HttpClient) { }
 
     public authorization(login: string, password: string) {
-        return this.http.get(`${BASE_PATH}/authorization/${login}${password}`);
+        return this.http.get(`${BASE_PATH}/authorization/${login}/${password}`);
     }
 
     public registration(login: string, password: string) {
-        return this.http.get(`${BASE_PATH}/registration/${login}${password}`);
+        return this.http.get(`${BASE_PATH}/registration/${login}/${password}`);
     }
 
     public getUser(id: string) {
