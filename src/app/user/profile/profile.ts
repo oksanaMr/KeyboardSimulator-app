@@ -19,12 +19,12 @@ export class ProfileComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.selectLevel = this.authorizationsService.currentUser.dif_id;
+        this.selectLevel = this.authorizationsService.currentUser.diff_id;
     }
 
     changeLevel(level: string) {
-        this.user.dif_id = level;
-        this.authorizationsService.changeLevel([this.user.id, this.user.dif_id]);
+        this.user.diff_id = level;
+        this.authorizationsService.changeLevel([this.user.id, this.user.diff_id]);
     }
 
 }

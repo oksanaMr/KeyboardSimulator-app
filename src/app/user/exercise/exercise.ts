@@ -23,7 +23,7 @@ export class ExerciseComponent implements OnInit {
 
 
     ngOnInit() {
-        this.exerciseService.getExerciseList(this.userService.currentUser.dif_id).subscribe(exercies => this.exerciseList = exercies);
+        this.exerciseService.getExerciseList(this.userService.currentUser.diff_id).subscribe(exercies => this.exerciseList = exercies);
     }
 
     selectExercise() {
