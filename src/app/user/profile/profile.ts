@@ -9,7 +9,7 @@ import { AuthorizationsService } from 'src/app/authorization.service';
     styleUrls: ['./profile.css']
 })
 
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
     user: User;
     levels: string[] = ['Слабый', 'Средний', 'Продвинутый']
     selectLevel = 'Слабый';
@@ -19,12 +19,12 @@ export class ProfileComponent {
     ) { }
 
     ngOnInit() {
-        this.selectLevel = this.authorizationsService.currentUser.id_level;
+        this.selectLevel = this.authorizationsService.currentUser.dif_id;
     }
 
     changeLevel(level: string) {
-        this.user.id_level = level;
-        this.authorizationsService.changeLevel([this.user.id, this.user.id_level]);
+        this.user.dif_id = level;
+        this.authorizationsService.changeLevel([this.user.id, this.user.dif_id]);
     }
 
 }
