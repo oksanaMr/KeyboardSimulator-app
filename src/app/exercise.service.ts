@@ -13,7 +13,7 @@ export class ExerciseService {
     constructor(private http: HttpClient) { }
 
     public getExerciseList(id_level: string): Observable<Exercise[]> {
-        return this.http.get<Exercise[]>(`${BASE_PATH}/getExerciseList/${id_level}`);
+        return this.http.get<Exercise[]>(`${BASE_PATH}/${id_level}`);
     }
 
     public getExercise(id_exercise: string): Observable<Exercise> {
