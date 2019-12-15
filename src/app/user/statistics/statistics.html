@@ -15,7 +15,7 @@
         </div>
     </nav>
     <div class="col-md-6 mx-auto mt-5 tableStatistics mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource | async">
+        <table mat-table [dataSource]="dataSource$ | async">
 
             <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef> Дата </th>

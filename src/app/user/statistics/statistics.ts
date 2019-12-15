@@ -4,6 +4,7 @@ import { StatisticsService } from 'src/app/statistics.server';
 import { UserStatistics } from 'src/app/userStatistics';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-statistics',
@@ -41,7 +42,7 @@ export class StatisticsComponent implements OnInit {
                 mistakes: statistic.num_of_mistakes,
                 speed: `${statistic.speed} зн / мин`,
                 time: `${statistic.exercise_time} с`,
-                date: `${statistic.date}`,
+                date: new Date(statistic.date),
                 id_exercise: statistic.exercise_id
             })))
         );
