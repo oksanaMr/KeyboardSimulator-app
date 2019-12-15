@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
     }
 
     changeLevel($event: MatRadioChange, i: number) {
-        this.user.diff_id = i;
+        this.user.diff_id = i+1;
         this.authorizationsService.changeData(this.user).subscribe(user => {
             this.user = user;
         });
