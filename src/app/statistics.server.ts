@@ -17,6 +17,6 @@ export class StatisticsService {
 
 
     saveStatistic(statistic: Statistic) {
-        return this.http.put(BASE_PATH, statistic);
+        return this.http.post(BASE_PATH, statistic);
     }
 }
