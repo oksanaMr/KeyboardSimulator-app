@@ -15,9 +15,9 @@ export class ProfileComponent implements OnInit {
     selectLevel = 'Слабый';
 
     diffIdMap = {
-        1: 'Слабый',
-        2: 'Средний',
-        3: 'Продвинутый'
+        1: this.levels[0],
+        2: this.levels[1],
+        3: this.levels[2]
     };
 
     constructor(
