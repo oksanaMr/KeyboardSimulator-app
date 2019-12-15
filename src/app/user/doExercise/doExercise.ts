@@ -10,6 +10,7 @@ import { ExerciseService } from 'src/app/exercise.service';
 import { Exercise, MappedExercise } from '@app/model/exercise';
 import { MatDialog } from '@angular/material';
 import { TrainResultComponent } from './train-result/train-result.component';
+import { StatisticsService } from 'src/app/statistics.server';
 
 @Component({
     selector: 'app-do-exercise',
@@ -55,26 +56,14 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
         private router: ActivatedRoute,
         private route: Router,
         public dialog: MatDialog,
-        private exerciseService: ExerciseService
+        private exerciseService: ExerciseService,
+        private statisticService: StatisticsService
     ) { }
 
     ngOnInit() {
         this.router.paramMap.pipe(
             map(paramMap => paramMap.get('id')),
             tap(console.log),
-            // switchMap(id => of({
-            //     id: 1,
-            //     dificulty_lvl: {
-            //         id: 1,
-            //         max_length: 2,
-            //         max_num_of_mistakes: 5,
-            //         min_length: 1,
-            //         pressing_time: 10, // рассчитываю, что это секунды
-            //         title: ''
-            //     },
-            //     textF: 'съешь еще этих мягких ',
-            //     textE: ' французских булок да выпей чаю'
-            // } as Exercise)),
             switchMap(id => this.exerciseService.getExercise(id)),
             tap(exercise => this.exercise = exercise),
             mergeMap(exercise => this.exerciseService.getDiff(exercise.diff_id)),
@@ -176,6 +165,16 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
                     }
                 }
             );
+
+            if (!train.isErrorState) {
+                this.statisticService.saveStatistic({
+                    date: Date.now(),
+                    exercise: this.exercise,
+                    exercise_time: time,
+                    num_of_mistakes: train.errors,
+                    speed: average,
+                }).subscribe(() => { });
+            }
 
             dialogRef.afterClosed().subscribe(result => {
                 if (result) {
