@@ -29,22 +29,25 @@ export class StatisticsComponent implements OnInit {
     displayedColumns: string[] = ['date', 'id_exercise', 'mistakes', 'time', 'speed'];
     dataSource$: Observable<any>;
 
+    userId;
+
     constructor(
         private router: Router,
         private statisticsService: StatisticsService,
         private activateRoute: ActivatedRoute) { }
 
     ngOnInit() {
-        this.dataSource$ = this.activateRoute.paramMap.pipe(
-            map(paramMap => paramMap.get('id')),
-            switchMap(id => this.statisticsService.getStatisticByUserId(id)),
-            map((statistics) => statistics.map(statistic => ({
-                mistakes: statistic.num_of_mistakes,
-                speed: `${statistic.speed} зн / мин`,
-                time: `${statistic.exercise_time} с`,
-                date: new Date(statistic.date),
-                id_exercise: statistic.exercise_id
-            })))
+        this.userId = this.activateRoute.snapshot.params.id;
+        this.dataSource$ =
+            this.statisticsService.getStatisticByUserId(this.userId).pipe(
+                map((statistics) => statistics.map(statistic => ({
+                    mistakes: statistic.num_of_mistakes,
+                    speed: `${statistic.speed} зн / мин`,
+                    time: `${statistic.exercise_time} с`,
+                    date: new Date(statistic.date),
+                    id_exercise: statistic.exercise_id
+                })))
+            )
         );
     }
 }

@@ -3,13 +3,14 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="profile">Профиль</a>
+                    <a class="nav-link" [routerLink]="['/profile', userId]">Профиль</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="exercise">Упражения</a>
+                    <a class="nav-link" [routerLink]="['/exercise', userId]">Упражения <span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="statistics">Статистика <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" [routerLink]="['/statistics', userId]">Статистика <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
