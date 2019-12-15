@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ExerciseService } from 'src/app/exercise.service';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
     selector: 'app-exercise',
@@ -23,7 +24,7 @@ export class ExerciseAdminComponent{
     {id: '33'}];
 
     displayedColumns: string[] = ['exercise', 'edit', 'delete'];
-    dataSource = this.exerciseData;
+    dataSource;
 
     constructor(
         private router: Router,
@@ -31,15 +32,14 @@ export class ExerciseAdminComponent{
         private activateRoute: ActivatedRoute){}
 
     ngOnInit(){
-    //const id = this.activateRoute.snapshot.params['id'];
-    //this.exerciseService.getExercises().subscribe(exerciseData => this.exerciseData = exerciseData);
+        this.exerciseService.getAllExercise().subscribe(exerciseData => this.dataSource = new MatTableDataSource(exerciseData));
     }
 
-    editExercise(id: string){
-
+    editExercise(id: number){
+        
     }
 
-    deteleExercise(id: string){
-
+    deteleExercise(id: number){
+        this.exerciseService.deleteExercise(id).subscribe(exerciseData => this.dataSource = new MatTableDataSource(exerciseData));
     }
 }

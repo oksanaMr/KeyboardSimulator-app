@@ -39,11 +39,15 @@ export class AuthorizationsService {
         return this.http.get<User>(`${BASE_PATH}/${id}`);
     }
 
-    public changeLevel(user: string[]) {
-        return this.http.post('http://localhost:8080/registration', user);
-    }
-
     public changeData(user: User) {
         return this.http.put<User>(`${BASE_PATH}`,user);
+    }
+
+    public deleteUser(id: number){
+        return this.http.delete<User[]>(`${BASE_PATH}/${id}`);
+    }
+
+    public getUsers() {
+        return this.http.get<User[]>(`${BASE_PATH}`);
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/user'
 import { AuthorizationsService } from 'src/app/authorization.service';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
     selector: 'app-accounts',
@@ -23,7 +24,7 @@ export class AccountsComponent{
     {id: 11, login: "nm,", password: "dfffff", type_of_access: "", diff_id:3}];
 
     displayedColumns: string[] = ['login', 'password', 'level','delete'];
-    dataSource = this.users;
+    dataSource;
 
     constructor(
         private router: Router,
@@ -31,11 +32,10 @@ export class AccountsComponent{
         private activateRoute: ActivatedRoute){}
 
     ngOnInit(){
-        //const id = this.activateRoute.snapshot.params['id'];
-        //this.authorizationsService.getUsers().subscribe(users => this.users = users);
+        this.authorizationsService.getUsers().subscribe(users => this.dataSource = new MatTableDataSource(users));
     }
 
-    deteleUser(id: string){
-
+    deteleUser(id: number){
+        this.authorizationsService.deleteUser(id).subscribe(users =>  this.dataSource = new MatTableDataSource(users));
     }
 }
