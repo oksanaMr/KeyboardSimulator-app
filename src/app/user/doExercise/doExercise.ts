@@ -66,7 +66,7 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
         this.userId = this.router.snapshot.params.id;
 
         this.router.paramMap.pipe(
-            map(paramMap => paramMap.get('id')),
+            map(paramMap => paramMap.get('userId')),
             tap(console.log),
             switchMap(id => this.exerciseService.getExercise(id)),
             tap(exercise => this.exercise = exercise),
