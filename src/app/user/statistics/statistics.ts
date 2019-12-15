@@ -47,7 +47,6 @@ export class StatisticsComponent implements OnInit {
                     date: new Date(statistic.date),
                     id_exercise: statistic.exercise_id
                 })))
-            )
-        );
+            );
     }
 }
