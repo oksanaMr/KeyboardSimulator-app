@@ -63,7 +63,7 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.userId = this.router.snapshot.params.id;
+        this.userId = this.router.snapshot.params.userId;
 
         this.router.paramMap.pipe(
             map(paramMap => paramMap.get('userId')),
