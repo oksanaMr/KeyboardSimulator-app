@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'exercise/:id', component: ExerciseComponent },
   { path: 'do-exercise/:userId/:id', component: DoExerciseComponent },
   { path: 'dataChange/:id', component: DataChangeComponent },
-  { path: 'statistics/:id', component: StatisticsComponent }
+  { path: 'statistics/:id', component: StatisticsComponent },
   { path: 'exerciseAdmin', component: ExerciseAdminComponent },
   { path: 'accounts', component: AccountsComponent },
   { path: 'exerciseChange', component: ExerciseChangeComponent },
