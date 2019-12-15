@@ -23,11 +23,11 @@ const routes: Routes = [
   { path: 'do-exercise/:userId/:id', component: DoExerciseComponent },
   { path: 'dataChange/:id', component: DataChangeComponent },
   { path: 'statistics/:id', component: StatisticsComponent },
-  { path: 'exerciseAdmin', component: ExerciseAdminComponent },
-  { path: 'accounts', component: AccountsComponent },
-  { path: 'exerciseChange', component: ExerciseChangeComponent },
-  { path: 'difficultyLevelChange', component: DifficultyLevelChangeComponent },
-  { path: 'statisticsAdmin', component: StatisticsAdminComponent }
+  { path: 'exerciseAdmin', component: ExerciseAdminComponent},
+  { path: 'accounts', component: AccountsComponent},
+  { path: 'exerciseChange', component: ExerciseChangeComponent},
+  { path: 'difficultyLevelChange', component: DifficultyLevelChangeComponent},
+  { path: 'statisticsAdmin', component: StatisticsAdminComponent}
 ];
 
 @NgModule({

@@ -37,22 +37,22 @@
 
                     <ng-container matColumnDef="id_exercise">
                     <th mat-header-cell *matHeaderCellDef> № Упражнения </th>
-                    <td mat-cell *matCellDef="let element"> {{element.id_exercise}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                     </ng-container>
                 
                     <ng-container matColumnDef="done">
                     <th mat-header-cell *matHeaderCellDef> Выполнено </th>
-                    <td mat-cell *matCellDef="let element"> {{element.done}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.count}} </td>
                     </ng-container>
                 
                     <ng-container matColumnDef="mistakes">
                     <th mat-header-cell *matHeaderCellDef> Ошибки </th>
-                    <td mat-cell *matCellDef="let element"> {{element.mistakes}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.num_of_mistakes}} </td>
                     </ng-container>
                 
                     <ng-container matColumnDef="time">
                     <th mat-header-cell *matHeaderCellDef> Время </th>
-                    <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.exercise_time}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="speed">

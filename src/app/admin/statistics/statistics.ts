@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StatisticsService } from 'src/app/statistics.server';
-import { MatRadioChange } from '@angular/material';
+import { MatRadioChange, MatTableDataSource } from '@angular/material';
 
 @Component({
     selector: 'app-statistics',
@@ -24,7 +24,7 @@ export class StatisticsAdminComponent{
     {done: "7896", id_exercise: '9', mistakes: "2", time: "29c", speed: "233 з/мин"}];
 
     displayedColumns: string[] = ['id_exercise','done', 'mistakes','time','speed'];
-    dataSource = this.userStatistics;
+    dataSource;
 
     levels: string[] = ['Таблица','График']
     selectLevel = 'Таблица';
@@ -32,8 +32,8 @@ export class StatisticsAdminComponent{
 
     title = 'Статистика';
     type = 'LineChart';
-    data =
-    [
+    data;
+    /*[
         ['1',789,8,10,56],
         ['2',456,1,36,233],
         ['3',32,2,15,180],
@@ -42,7 +42,7 @@ export class StatisticsAdminComponent{
         ['6',412,7,50,145],
         ['7',663,4,45,156],
         ['8',23,5,39,256],
-    ];
+    ];*/
     columnNames = ['Упражнение','Выполнено','Ошибки','Время','Скорость'];
     options = {
         hAxis : {
@@ -61,8 +61,8 @@ export class StatisticsAdminComponent{
         private activateRoute: ActivatedRoute){}
 
     ngOnInit(){
-        //const id = this.activateRoute.snapshot.params['id'];
-        //this.statisticsService.getStatisticsUser(id).subscribe(userStatistics => this.userStatistics = userStatistics);
+        this.statisticsService.getAllStatistics().subscribe(userStatistics => {this.dataSource = new MatTableDataSource(userStatistics);
+            this.data = userStatistics});
     }     
     
     changeLevel($event: MatRadioChange){

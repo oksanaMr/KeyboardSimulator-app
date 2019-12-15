@@ -25,7 +25,7 @@
             <ng-container matColumnDef="login">
                 <th mat-header-cell *matHeaderCellDef> Логин </th>
                 <td mat-cell *matCellDef="let element">
-                    <a mat-button color="primary" routerLink="/statistics">{{element.login}}</a>
+                    <a mat-button color="primary" [routerLink]="['/statistics',element.id]">{{element.login}}</a>
                 </td>
             </ng-container>
             
