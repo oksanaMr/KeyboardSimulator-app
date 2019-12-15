@@ -6,5 +6,6 @@ export interface Statistic {
     num_of_mistakes: number;
     speed: number;
     date: number;
-    exercise: Exercise;
+    exercise_id: number;
+    user_id: number;
 }
