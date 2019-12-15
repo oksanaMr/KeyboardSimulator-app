@@ -185,7 +185,7 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
                 if (result) {
                     location.reload();
                 } else {
-                    this.route.navigate(['../statistics']);
+                    this.route.navigate(['../statistics', this.userId]);
                 }
             });
         }));
