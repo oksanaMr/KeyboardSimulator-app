@@ -3,13 +3,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="profile">Профиль <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" [routerLink]="['/profile',user.id]">Профиль <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="exercise/{{user.diff_id}}">Упражения</a>
+                    <a class="nav-link" [routerLink]="['/exercise',user.id]">Упражения</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="statistics">Статистика</a>
+                    <a class="nav-link" [routerLink]="['/profile',user.id]">Статистика</a>
                 </li>
             </ul>
         </div>
@@ -32,7 +32,7 @@
                         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
                             [(ngModel)]="selectLevel">
                             <mat-radio-button class="example-radio-button" *ngFor="let level of levels; let i = index"
-                                [value]="i" change="changeLevel(i)">
+                                [value]="level" change="changeLevel(i)">
                                 {{level}}
                             </mat-radio-button>
                         </mat-radio-group>
@@ -41,8 +41,7 @@
             </div>
         </div>
         <div class="row justify-content-center mt-5">
-            <a [routerLink]="['/dataChange']" class="btn btn-primary mr-4">Изменить данные</a>
-            <!--a [routerLink]="['/dataChange','user.id']" [queryParams]="{'loginu':'user.login', 'passwordu': 'user.password'}" class="btn btn-primary mr-4">Изменить данные</a>-->
+            <a [routerLink]="['/dataChange',user.id]" class="btn btn-primary mr-4">Изменить данные</a>
             <a [routerLink]="['/']" class="btn btn-primary">Выход</a>
         </div>
     </div>

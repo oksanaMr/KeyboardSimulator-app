@@ -2,14 +2,14 @@
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="profile">Профиль</a>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/profile',user.id]">Профиль</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="exercise">Упражения <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" [routerLink]="['/exercise',user.id]">Упражения <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="statistics">Статистика</a>
+                    <a class="nav-link" [routerLink]="['/profile',user.id]">Статистика</a>
                 </li>
             </ul>
         </div>

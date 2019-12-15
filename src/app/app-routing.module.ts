@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'exercise/:id', component: ExerciseComponent },
   { path: 'do-exercise/:id', component: DoExerciseComponent },
-  { path: 'dataChange', component: DataChangeComponent },
+  { path: 'dataChange/:id', component: DataChangeComponent },
   { path: 'statistics', component: StatisticsComponent }
 ];
 
