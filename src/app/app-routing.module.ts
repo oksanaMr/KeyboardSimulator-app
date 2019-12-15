@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'exercise/:id', component: ExerciseComponent },
-  { path: 'do-exercise/:id', component: DoExerciseComponent },
+  { path: 'do-exercise/:userId/:id', component: DoExerciseComponent },
   { path: 'dataChange/:id', component: DataChangeComponent },
   { path: 'statistics', component: StatisticsComponent },
   { path: 'exerciseAdmin', component: ExerciseAdminComponent},

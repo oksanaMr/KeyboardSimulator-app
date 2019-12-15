@@ -37,6 +37,8 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
     mappedExercise: MappedExercise;
     showKeyboard = true;
 
+    userId: string;
+
     keyboardTrain = new KeyboardTrain(this.pattern);
 
     @HostListener('document:keydown.shift') shiftDown() {
@@ -61,6 +63,8 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
+        this.userId = this.router.snapshot.params.id;
+
         this.router.paramMap.pipe(
             map(paramMap => paramMap.get('id')),
             tap(console.log),
@@ -169,7 +173,8 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
             if (!train.isErrorState) {
                 this.statisticService.saveStatistic({
                     date: Date.now(),
-                    exercise: this.exercise,
+                    exercise_id: this.exercise.id,
+                    user_id: +this.userId,
                     exercise_time: time,
                     num_of_mistakes: train.errors,
                     speed: average,

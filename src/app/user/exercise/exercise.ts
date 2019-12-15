@@ -39,19 +39,19 @@ export class ExerciseComponent implements OnInit {
 
     selectExercise() {
         if (this.exercise != "") {
-            this.router.navigate(['/do-exercise', this.exercise]);
+            this.router.navigate(['/do-exercise', this.user.id, this.exercise]);
         }
     }
 
-    link1(){
+    link1() {
         this.router.navigate(['/profile', this.user.id]);
     }
 
-    link2(){
+    link2() {
         this.router.navigate(['/exercise', this.user.id]);
     }
 
-    link3(){
+    link3() {
         this.router.navigate(['/profile', this.user.id]);
     }
 
