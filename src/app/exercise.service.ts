@@ -25,4 +25,12 @@ export class ExerciseService {
     public getDiff(id: string) {
         return this.http.get<Dificulty>(`${BASE_PATH_DIFF}/${id}`);
     }
+
+    public getAllExercise(){
+        return this.http.get<Exercise[]>(`${BASE_PATH}`);
+    }
+
+    public deleteExercise(id:number){
+        return this.http.delete<Exercise[]>(`${BASE_PATH}/${id}`);
+    }
 }
