@@ -14,7 +14,7 @@ export class ExerciseService {
 
     constructor(private http: HttpClient) { }
 
-    public getExerciseList(id_level: string): Observable<Exercise[]> {
+    public getExerciseList(id_level: number): Observable<Exercise[]> {
         return this.http.get<Exercise[]>(`${BASE_PATH}/${id_level}`);
     }
 

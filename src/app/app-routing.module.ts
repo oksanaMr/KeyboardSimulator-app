@@ -7,6 +7,11 @@ import { ExerciseComponent } from './user/exercise/exercise';
 import { DataChangeComponent } from './user/dataChange/dataChange';
 import { StatisticsComponent } from './user/statistics/statistics';
 import { DoExerciseComponent } from './user/doExercise/doExercise';
+import { ExerciseAdminComponent } from './admin/exercise/exercise';
+import { AccountsComponent } from './admin/accounts/accounts';
+import { ExerciseChangeComponent } from './admin/exerciseChange/exerciseChange';
+import { DifficultyLevelChangeComponent } from './admin/difficultyLevelChange/difficultyLevelChange';
+import { StatisticsAdminComponent } from './admin/statistics/statistics';
 
 
 const routes: Routes = [
@@ -16,7 +21,12 @@ const routes: Routes = [
   { path: 'exercise/:id', component: ExerciseComponent },
   { path: 'do-exercise/:id', component: DoExerciseComponent },
   { path: 'dataChange/:id', component: DataChangeComponent },
-  { path: 'statistics', component: StatisticsComponent }
+  { path: 'statistics', component: StatisticsComponent },
+  { path: 'exerciseAdmin', component: ExerciseAdminComponent},
+  { path: 'accounts', component: AccountsComponent},
+  { path: 'exerciseChange', component: ExerciseChangeComponent},
+  { path: 'difficultyLevelChange', component: DifficultyLevelChangeComponent},
+  { path: 'statisticsAdmin', component: StatisticsAdminComponent}
 ];
 
 @NgModule({

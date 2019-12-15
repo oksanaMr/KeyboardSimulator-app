@@ -1,7 +1,7 @@
 export interface User {
-    id: string;
+    id: number;
     login: string;
     password: string;
     type_of_access: string;
-    diff_id: string;
+    diff_id: number;
 }
