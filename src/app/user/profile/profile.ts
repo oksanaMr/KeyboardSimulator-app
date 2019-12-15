@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/user';
 import { AuthorizationsService } from 'src/app/authorization.service';
+import { MatRadioChange } from '@angular/material';
 
 @Component({
     selector: 'app-profile',
@@ -35,21 +36,11 @@ export class ProfileComponent implements OnInit {
         });
     }
 
-    link1(){
-        this.router.navigate(['/profile', this.user.id]);
-    }
-
-    link2(){
-        this.router.navigate(['/exercise', this.user.id]);
-    }
-
-    link3(){
-        this.router.navigate(['/profile', this.user.id]);
-    }
-
-    changeLevel(level: string) {
-        this.user.diff_id = level;
-        this.authorizationsService.changeLevel([this.user.id, this.user.diff_id]);
+    changeLevel($event: MatRadioChange, i: number) {
+        this.user.diff_id = i;
+        this.authorizationsService.changeData(this.user).subscribe(user => {
+            this.user = user;
+        });
     }
 
 }

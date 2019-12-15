@@ -1,0 +1,62 @@
+<div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="exerciseChange">Создание/Редактирование упражнения <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="difficultyLevelChange">Изменение уровня сложности</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 offset-md-10 pb-2">
+                <a mat-icon-button color="primary" routerLink="/info">
+                    <mat-icon style="font-size: 30px">info</mat-icon>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <h5>Ввод текста упраженения</h5>
+                </div>
+                <div class="row mt-1">
+                    <div class="input-group">
+                        <textarea class="form-control" aria-label="textarea" rows="15"></textarea>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-3 offset-md-2 mt-5">
+                <div class="row mt-5">
+                    <h5>Уровень сложности</h5>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <div class="card border-primary">
+                            <div class="card-body">
+                                <mat-radio-group
+                                    aria-labelledby="example-radio-group-label"
+                                    class="example-radio-group"
+                                    [(ngModel)]="selectLevel">
+                                    <mat-radio-button class="example-radio-button" *ngFor="let level of levels" [value]="level" change="changeLevel(level)">
+                                        {{level}} 
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="row mt-5">
+                <button class="btn btn-primary col-md-4" on-click="selectExercise">Сгенерировать упраженение автоматически</button>
+            </div>
+        <div class="row mt-3">
+            <button class="btn btn-primary col-md-4 mr-5" on-click="selectExercise">Загрузить упражнение из файла</button>
+            <button class="btn btn-primary col-md-1.5 offset-md-4" on-click="selectExercise">Сохранить</button>
+        </div>
+    </div>
+</div>

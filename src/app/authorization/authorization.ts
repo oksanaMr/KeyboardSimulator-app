@@ -24,7 +24,7 @@ export class AuthorizationComponent {
             id => {
                 //В базе данных идентификатор адинистратора должен быть равен 1
                 if (id == "1") {
-                    this.router.navigate(['/exercise', id]);
+                    this.router.navigate(['/exerciseAdmin']);
                 }
                 else { this.router.navigate(['/profile', id]); }//У пользователя идентификатор не равен 1
             },

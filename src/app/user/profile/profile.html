@@ -32,7 +32,7 @@
                         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
                             [(ngModel)]="selectLevel">
                             <mat-radio-button class="example-radio-button" *ngFor="let level of levels; let i = index"
-                                [value]="level" change="changeLevel(i)">
+                                [value]="level" (change)="changeLevel($event,i)">
                                 {{level}}
                             </mat-radio-button>
                         </mat-radio-group>

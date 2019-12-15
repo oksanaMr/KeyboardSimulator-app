@@ -21,6 +21,15 @@ import { MatTableModule } from '@angular/material/table';
 import { StatisticsComponent } from './user/statistics/statistics';
 import { DoExerciseComponent } from './user/doExercise/doExercise';
 import { TrainResultComponent } from './user/doExercise/train-result/train-result.component';
+import { AccountsComponent } from './admin/accounts/accounts';
+import { DifficultyLevelChangeComponent } from './admin/difficultyLevelChange/difficultyLevelChange';
+import { ExerciseAdminComponent } from './admin/exercise/exercise';
+import { StatisticsAdminComponent } from './admin/statistics/statistics';
+import { ExerciseChangeComponent } from './admin/exerciseChange/exerciseChange';
+import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material';
+import { GoogleChartsModule } from 'angular-google-charts'
 
 @NgModule({
   declarations: [
@@ -32,7 +41,12 @@ import { TrainResultComponent } from './user/doExercise/train-result/train-resul
     DoExerciseComponent,
     DataChangeComponent,
     StatisticsComponent,
-    TrainResultComponent
+    TrainResultComponent,
+    AccountsComponent,
+    DifficultyLevelChangeComponent,
+    ExerciseAdminComponent,
+    StatisticsAdminComponent,
+    ExerciseChangeComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +58,11 @@ import { TrainResultComponent } from './user/doExercise/train-result/train-resul
     MatListModule,
     MatDialogModule,
     MatRadioModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    GoogleChartsModule
   ],
   entryComponents: [
     TrainResultComponent
