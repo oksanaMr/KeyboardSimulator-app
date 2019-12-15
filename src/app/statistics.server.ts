@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { UserStatistics } from './userStatistics';
 import { Statistic } from '@app/model/statistic';
+import { Observable } from 'rxjs';
 
 const BASE_PATH = 'http://localhost:8080/statistic';
 
@@ -18,5 +19,9 @@ export class StatisticsService {
 
     saveStatistic(statistic: Statistic) {
         return this.http.post(BASE_PATH, statistic);
+    }
+
+    getStatisticByUserId(id: string) {
+        return this.http.get<Statistic[]>(`${BASE_PATH}/${id}`);
     }
 }

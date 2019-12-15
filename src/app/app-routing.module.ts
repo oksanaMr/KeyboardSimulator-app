@@ -7,6 +7,7 @@ import { ExerciseComponent } from './user/exercise/exercise';
 import { DataChangeComponent } from './user/dataChange/dataChange';
 import { StatisticsComponent } from './user/statistics/statistics';
 import { DoExerciseComponent } from './user/doExercise/doExercise';
+import { CommonModule } from '@angular/common';
 
 
 const routes: Routes = [
@@ -16,11 +17,11 @@ const routes: Routes = [
   { path: 'exercise/:id', component: ExerciseComponent },
   { path: 'do-exercise/:userId/:id', component: DoExerciseComponent },
   { path: 'dataChange/:id', component: DataChangeComponent },
-  { path: 'statistics', component: StatisticsComponent }
+  { path: 'statistics/:id', component: StatisticsComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
