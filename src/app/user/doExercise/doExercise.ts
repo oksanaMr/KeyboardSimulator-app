@@ -101,6 +101,7 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
 
     handleStopClick() {
         this.keyboardTrain.stop();
+        this.route.navigate(['../exercise', this.userId]);
     }
 
     private initObservables() {
