@@ -27,6 +27,9 @@ export class ExerciseComponent implements OnInit {
 
     ngOnInit() {
         const userId = this.route.snapshot.params.id;
+        this.userService.getUser(userId).subscribe(user => {
+            this.user = user;
+        });
         console.log(userId);
         this.exerciseList$ =
             this.userService.getUser(userId).pipe(mergeMap(user =>
@@ -38,6 +41,18 @@ export class ExerciseComponent implements OnInit {
         if (this.exercise != "") {
             this.router.navigate(['/do-exercise', this.exercise]);
         }
+    }
+
+    link1(){
+        this.router.navigate(['/profile', this.user.id]);
+    }
+
+    link2(){
+        this.router.navigate(['/exercise', this.user.id]);
+    }
+
+    link3(){
+        this.router.navigate(['/profile', this.user.id]);
     }
 
 }

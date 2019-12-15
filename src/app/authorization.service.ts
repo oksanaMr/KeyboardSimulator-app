@@ -43,8 +43,7 @@ export class AuthorizationsService {
         return this.http.post('http://localhost:8080/registration', user);
     }
 
-    public changeData(id: string, login: string, password: string) {
-        const body = { id: id, login: login, passwor: password }
-        return this.http.post('http://localhost:8080/registration/', body);
+    public changeData(user: User) {
+        return this.http.put<User>(`${BASE_PATH}`,user);
     }
 }

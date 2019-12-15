@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthorizationsService } from 'src/app/authorization.service';
 import {Subscription} from 'rxjs';
+import { User } from 'src/app/user';
 
 @Component({
     selector: 'app-dataChange',
@@ -10,13 +11,8 @@ import {Subscription} from 'rxjs';
 })
 
 export class DataChangeComponent{
-    private id:string;
-    private loginu:string;
-    private passwordu:string;
+    user: User;
     private loading=false;
-
-    private routeSubscription: Subscription;
-    private querySubscription: Subscription;
 
     constructor(
     private authorizationsService: AuthorizationsService,
@@ -24,18 +20,18 @@ export class DataChangeComponent{
     private activatedRoute: ActivatedRoute){}
 
     ngOnInit(){
-        /*this.routeSubscription = this.activatedRoute.params.subscribe(params=>this.id=params['id']);
-        this.querySubscription = this.activatedRoute.queryParams.subscribe(
-            (queryParam: any) => {
-                this.loginu = queryParam['loginu'];
-                this.passwordu = queryParam['passwordu'];
-            }
-        );*/
+        const userId = this.activatedRoute.snapshot.params.id;
+
+        this.authorizationsService.getUser(userId).subscribe(user => {
+            this.user = user;
+        });
     }
     changeData(){
         this.loading = true;
-        this.authorizationsService.changeData(this.id,this.loginu, this.passwordu);
+        this.authorizationsService.changeData(this.user).subscribe(user => {
+            this.user = user;
+        });
         this.loading = false;
-        this.router.navigate(['/profile']);
+        //this.router.navigate(['/profile',this.user.id]);
     }
 }

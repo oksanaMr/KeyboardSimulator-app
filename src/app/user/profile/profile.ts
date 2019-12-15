@@ -12,7 +12,7 @@ import { AuthorizationsService } from 'src/app/authorization.service';
 export class ProfileComponent implements OnInit {
     user: User;
     levels: string[] = ['Слабый', 'Средний', 'Продвинутый']
-    selectLevel = 'Слабый';
+    selectLevel: string;
 
     diffIdMap = {
         1: this.levels[0],
@@ -21,17 +21,30 @@ export class ProfileComponent implements OnInit {
     };
 
     constructor(
-        public router: ActivatedRoute,
+        public router: Router,
+        public activatedRoute: ActivatedRoute,
         public authorizationsService: AuthorizationsService,
     ) { }
 
     ngOnInit() {
-        const userId = this.router.snapshot.params.id;
+        const userId = this.activatedRoute.snapshot.params.id;
 
         this.authorizationsService.getUser(userId).subscribe(user => {
             this.user = user;
             this.selectLevel = this.diffIdMap[user.diff_id];
         });
+    }
+
+    link1(){
+        this.router.navigate(['/profile', this.user.id]);
+    }
+
+    link2(){
+        this.router.navigate(['/exercise', this.user.id]);
+    }
+
+    link3(){
+        this.router.navigate(['/profile', this.user.id]);
     }
 
     changeLevel(level: string) {
