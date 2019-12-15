@@ -104,7 +104,7 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
     }
 
     private initObservables() {
-        this.keyPress$ = fromEvent(document, 'keyup').pipe(
+        this.keyPress$ = fromEvent(document, 'keypress').pipe(
             shareReplay(1),
             takeWhile(_ => !this.keyboardTrain.done)
         );
