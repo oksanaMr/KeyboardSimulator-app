@@ -24,7 +24,7 @@
                 </div>
                 <div class="row mt-1">
                     <div class="input-group">
-                        <textarea class="form-control" aria-label="textarea" rows="15"></textarea>
+                        <textarea class="form-control" aria-label="textarea" rows="15" [(ngModel)]="exercise.text"></textarea>
                     </div>
                 </div>
                 
@@ -41,7 +41,7 @@
                                     aria-labelledby="example-radio-group-label"
                                     class="example-radio-group"
                                     [(ngModel)]="selectLevel">
-                                    <mat-radio-button class="example-radio-button" *ngFor="let level of levels" [value]="level" change="changeLevel(level)">
+                                    <mat-radio-button class="example-radio-button" *ngFor="let level of levels; let i = index" [value]="level" (change)="changeLevel($event,i)">
                                         {{level}} 
                                     </mat-radio-button>
                                 </mat-radio-group>
@@ -52,11 +52,11 @@
             </div>
         </div> 
         <div class="row mt-5">
-                <button class="btn btn-primary col-md-4" on-click="selectExercise">Сгенерировать упраженение автоматически</button>
+                <button class="btn btn-primary col-md-4" on-click="generateExercise()">Сгенерировать упраженение автоматически</button>
             </div>
         <div class="row mt-3">
             <button class="btn btn-primary col-md-4 mr-5" on-click="selectExercise">Загрузить упражнение из файла</button>
-            <button class="btn btn-primary col-md-1.5 offset-md-4" on-click="selectExercise">Сохранить</button>
+            <button class="btn btn-primary col-md-1.5 offset-md-4" on-click="saveExercise()">Сохранить</button>
         </div>
     </div>
 </div>

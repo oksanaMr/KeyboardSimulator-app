@@ -36,7 +36,7 @@ export class ExerciseAdminComponent{
     }
 
     editExercise(id: number){
-        
+        this.router.navigate(['/exerciseChange', id]);
     }
 
     deteleExercise(id: number){

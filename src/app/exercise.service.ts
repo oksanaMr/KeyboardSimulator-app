@@ -19,10 +19,10 @@ export class ExerciseService {
     }
 
     public getExercise(id_exercise: string): Observable<Exercise> {
-        return this.http.get<Exercise>(`${BASE_PATH}/getExercise/${id_exercise}`);
+        return this.http.get<Exercise>(`${BASE_PATH}/${id_exercise}`);
     }
 
-    public getDiff(id: string) {
+    public getDiff(id: number) {
         return this.http.get<Dificulty>(`${BASE_PATH_DIFF}/${id}`);
     }
 
@@ -32,5 +32,17 @@ export class ExerciseService {
 
     public deleteExercise(id:number){
         return this.http.delete<Exercise[]>(`${BASE_PATH}/${id}`);
+    }
+
+    public generateExercise(exercise: Exercise){
+        return this.http.post<Exercise>(`${BASE_PATH}/generate`,exercise);
+    }
+
+    public saveExercise(exercise: Exercise){
+        return this.http.put<Exercise>(`${BASE_PATH}`,exercise);
+    }
+
+    public newExercise(exercise: Exercise){
+        return this.http.post<Exercise>(`${BASE_PATH}/newExercise`,exercise);
     }
 }

@@ -27,6 +27,6 @@ export class StatisticsService {
     }
 
     public getAllStatistics(){
-        return this.http.get<AllStatistics[]>(`${BASE_PATH}`);
+        return this.http.get<AllStatistics[]>(`${BASE_PATH}/statisticsAdmin`);
     }
 }

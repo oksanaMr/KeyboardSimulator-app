@@ -32,8 +32,8 @@ export class StatisticsAdminComponent{
 
     title = 'Статистика';
     type = 'LineChart';
-    data;
-    /*[
+    data =
+    [
         ['1',789,8,10,56],
         ['2',456,1,36,233],
         ['3',32,2,15,180],
@@ -42,7 +42,7 @@ export class StatisticsAdminComponent{
         ['6',412,7,50,145],
         ['7',663,4,45,156],
         ['8',23,5,39,256],
-    ];*/
+    ];
     columnNames = ['Упражнение','Выполнено','Ошибки','Время','Скорость'];
     options = {
         hAxis : {
@@ -61,8 +61,7 @@ export class StatisticsAdminComponent{
         private activateRoute: ActivatedRoute){}
 
     ngOnInit(){
-        this.statisticsService.getAllStatistics().subscribe(userStatistics => {this.dataSource = new MatTableDataSource(userStatistics);
-            this.data = userStatistics});
+        this.statisticsService.getAllStatistics().subscribe(userStatistics => {this.dataSource = new MatTableDataSource(userStatistics)});
     }     
     
     changeLevel($event: MatRadioChange){

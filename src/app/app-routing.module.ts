@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'statistics/:id', component: StatisticsComponent },
   { path: 'exerciseAdmin', component: ExerciseAdminComponent},
   { path: 'accounts', component: AccountsComponent},
-  { path: 'exerciseChange', component: ExerciseChangeComponent},
+  { path: 'exerciseChange/:id', component: ExerciseChangeComponent},
   { path: 'difficultyLevelChange', component: DifficultyLevelChangeComponent},
   { path: 'statisticsAdmin', component: StatisticsAdminComponent}
 ];
