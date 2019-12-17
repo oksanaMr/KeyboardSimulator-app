@@ -14,7 +14,20 @@ export class ExerciseChangeComponent implements OnInit{
 
     levels: string[] = ['Легкий','Средний','Сложный']
     selectLevel = 'Легкий';
-    exercise : Exercise;
+    exercise : Exercise = {
+        id: 0,
+        textE:"",
+        textF:"",
+        diff_id:1,
+        dificulty_lvl:{
+            id: 1,
+            title: 'Легкий',
+            max_length: 400,
+            min_length: 50,
+            max_num_of_mistakes: 10,
+            pressing_time: 1
+        }
+    };
     flag : boolean;
     text : string;
 
@@ -35,7 +48,9 @@ export class ExerciseChangeComponent implements OnInit{
         this.id = this.activateRoute.snapshot.params['id'];
         if(this.id == 0){
             this.flag = false;
+            console.log(this.id);
             this.exercise.diff_id = 1;
+            console.log(this.exercise);
         }
         else {
             this.exerciseService.getExercise(this.id).subscribe(exercise => {this.exercise = exercise;
@@ -62,7 +77,10 @@ export class ExerciseChangeComponent implements OnInit{
             this.exercise.textF = this.text;
         }
         if(!this.flag){
-            this.exerciseService.newExercise(this.exercise.diff_id,this.exercise.textF, this.exercise.textE).subscribe(exercise => this.exercise = exercise);
+            console.log(this.exercise.textF);
+            console.log(this.exercise.textE);
+            console.log(this.exercise.diff_id);
+            this.exerciseService.newExercise(this.exercise.textF, this.exercise.textE,this.exercise.diff_id).subscribe(exercise => this.exercise = exercise);
         }
         else{
             this.exerciseService.saveExercise(this.exercise).subscribe(exercise => this.exercise = exercise);
