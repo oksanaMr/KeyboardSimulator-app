@@ -17,12 +17,14 @@ export class DifficultyLevelChangeComponent{
     area3= false;
     area4= false;
 
+    id: number;
+
     constructor(
         private router: Router,
         private activateRoute: ActivatedRoute){}
 
     ngOnInit(){
-        //const id = this.activateRoute.snapshot.params['id'];
+        this.id = this.activateRoute.snapshot.params['id'];
         //this.authorizationsService.getUsers().subscribe(users => this.users = users);
     }
 }

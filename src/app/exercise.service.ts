@@ -42,7 +42,8 @@ export class ExerciseService {
         return this.http.put<Exercise>(`${BASE_PATH}`,exercise);
     }
 
-    public newExercise(exercise: Exercise){
-        return this.http.post<Exercise>(`${BASE_PATH}/newExercise`,exercise);
+    public newExercise(diff_id: number, textF: string, textE: string){
+        const body = { diff_id: diff_id, textF: textF, textE : textE};
+        return this.http.post<Exercise>(`${BASE_PATH}/newExercise`,body);
     }
 }

@@ -24,6 +24,7 @@ export class ExerciseChangeComponent implements OnInit{
         3: this.levels[2]
     };
 
+    id:number;
 
     constructor(
         private router: Router,
@@ -31,27 +32,37 @@ export class ExerciseChangeComponent implements OnInit{
         private exerciseService : ExerciseService){}
 
     ngOnInit(){
-        const id = this.activateRoute.snapshot.params['id'];
-        if(id == 0){
+        this.id = this.activateRoute.snapshot.params['id'];
+        if(this.id == 0){
             this.flag = false;
+            this.exercise.diff_id = 1;
         }
         else {
-            this.exerciseService.getExercise(id).subscribe(exercise => {this.exercise = exercise;
-                console.log(exercise);} );
-            console.log(this.exercise);
+            this.exerciseService.getExercise(this.id).subscribe(exercise => {this.exercise = exercise;
+                this.selectLevel = this.diffIdMap[exercise.diff_id];
+                this.text = exercise.textF + exercise.textE;} );        
             this.flag = true;
-            this.selectLevel = this.diffIdMap[this.exercise.diff_id];
-            this.text = this.exercise.textF + this.exercise.textE;
         }
     }
 
     generateExercise(){
-        this.exerciseService.generateExercise(this.exercise.diff_id).subscribe(exercise => this.exercise = exercise);
+        this.exerciseService.generateExercise(this.exercise.diff_id).subscribe(exercise => {
+        this.text = exercise.textF + exercise.textE;
+        this.exercise.textF = exercise.textF;
+        this.exercise.textE = exercise.textE;
+        console.log(this.exercise);});
     }
 
     saveExercise(){
-        if(this.flag){
-            this.exerciseService.newExercise(this.exercise).subscribe(exercise => this.exercise = exercise);
+        if(this.text.length > 255){
+            this.exercise.textF= this.text.substr(0,255);
+            this.exercise.textE = this.text.substr(255,this.text.length);
+        }
+        else {
+            this.exercise.textF = this.text;
+        }
+        if(!this.flag){
+            this.exerciseService.newExercise(this.exercise.diff_id,this.exercise.textF, this.exercise.textE).subscribe(exercise => this.exercise = exercise);
         }
         else{
             this.exerciseService.saveExercise(this.exercise).subscribe(exercise => this.exercise = exercise);
@@ -60,5 +71,6 @@ export class ExerciseChangeComponent implements OnInit{
 
     changeLevel($event: MatRadioChange, i: number) {
         this.exercise.diff_id = i + 1;
+        console.log(this.exercise);
     }
 }

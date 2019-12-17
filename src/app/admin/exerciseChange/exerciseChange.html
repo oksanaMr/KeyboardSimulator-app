@@ -3,12 +3,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="exerciseChange">Создание/Редактирование упражнения <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" [routerLink]="['/exerciseChange',id]">Создание/Редактирование упражнения <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="difficultyLevelChange">Изменение уровня сложности</a>
+                    <a class="nav-link" [routerLink]="['/difficultyLevelChange',id]">Изменение уровня сложности</a>
                 </li>
             </ul>
+            <a class="btn btn-link" routerLink="/exerciseAdmin">Выход</a>
         </div>
     </nav>
     <div class="container">
