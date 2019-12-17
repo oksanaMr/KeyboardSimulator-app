@@ -3,19 +3,27 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/profile', userId]">Профиль</a>
+                    <a class="nav-link" [routerLink]="['/profile', user.id]">Профиль</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/exercise', userId]">Упражения <span
+                    <a class="nav-link" [routerLink]="['/exercise', user.id]">Упражения <span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['/statistics', userId]">Статистика <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" [routerLink]="['/statistics', user.id]">Статистика <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
+            <span class="navbar-text">
+                Учетная запись: {{user.login}}
+            </span>
         </div>
     </nav>
-    <div class="col-md-6 mx-auto mt-5 tableStatistics mat-elevation-z8">
+    <div class="col-md-1 offset-md-10">
+        <a mat-icon-button color="primary" routerLink="/info">
+            <mat-icon style="font-size: 30px">info</mat-icon>
+        </a>
+    </div>
+    <div class="col-md-6 mx-auto mt-3 tableStatistics mat-elevation-z8">
         <table mat-table [dataSource]="dataSource$ | async">
 
             <ng-container matColumnDef="date">

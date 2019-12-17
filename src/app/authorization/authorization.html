@@ -1,4 +1,9 @@
-<div class="col-md-4 mx-auto" style="top: 170px">
+<div class="col-md-1 offset-md-10">
+    <a mat-icon-button color="primary" routerLink="/info">
+        <mat-icon style="font-size: 30px">info</mat-icon>
+    </a>
+</div>
+<div class="col-md-4 mx-auto" style="top: 140px">
     <h2>Авторизация</h2>
     <form name="form" (ngSubmit)="f.form.valid && autho()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !login.valid }">

@@ -32,10 +32,14 @@ export class AccountsComponent{
         private activateRoute: ActivatedRoute){}
 
     ngOnInit(){
-        this.authorizationsService.getUsers().subscribe(users => this.dataSource = new MatTableDataSource(users));
+        this.authorizationsService.getUsers().subscribe(users => { users.splice(0,1);
+            this.dataSource = new MatTableDataSource(users);
+        });
     }
 
     deteleUser(id: number){
-        this.authorizationsService.deleteUser(id).subscribe(users =>  this.dataSource = new MatTableDataSource(users));
+        this.authorizationsService.deleteUser(id).subscribe(users => { users.splice(0,1);
+            this.dataSource = new MatTableDataSource(users);
+        });
     }
 }

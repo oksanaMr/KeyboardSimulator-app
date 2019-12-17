@@ -43,16 +43,4 @@ export class ExerciseComponent implements OnInit {
         }
     }
 
-    link1() {
-        this.router.navigate(['/profile', this.user.id]);
-    }
-
-    link2() {
-        this.router.navigate(['/exercise', this.user.id]);
-    }
-
-    link3() {
-        this.router.navigate(['/profile', this.user.id]);
-    }
-
 }

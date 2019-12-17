@@ -18,8 +18,8 @@ export class ExerciseService {
         return this.http.get<Exercise[]>(`${BASE_PATH}/${id_level}`);
     }
 
-    public getExercise(id_exercise: string): Observable<Exercise> {
-        return this.http.get<Exercise>(`${BASE_PATH}/${id_exercise}`);
+    public getExercise(id_exercise: number): Observable<Exercise> {
+        return this.http.get<Exercise>(`${BASE_PATH}/getExercise/${id_exercise}`);
     }
 
     public getDiff(id: number) {
@@ -34,8 +34,8 @@ export class ExerciseService {
         return this.http.delete<Exercise[]>(`${BASE_PATH}/${id}`);
     }
 
-    public generateExercise(exercise: Exercise){
-        return this.http.post<Exercise>(`${BASE_PATH}/generate`,exercise);
+    public generateExercise(diff_id: number){
+        return this.http.post<Exercise>(`${BASE_PATH}/generate`,diff_id);
     }
 
     public saveExercise(exercise: Exercise){

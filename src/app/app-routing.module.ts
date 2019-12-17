@@ -13,6 +13,7 @@ import { AccountsComponent } from './admin/accounts/accounts';
 import { ExerciseChangeComponent } from './admin/exerciseChange/exerciseChange';
 import { DifficultyLevelChangeComponent } from './admin/difficultyLevelChange/difficultyLevelChange';
 import { StatisticsAdminComponent } from './admin/statistics/statistics';
+import { InfoComponent } from './info/info';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'accounts', component: AccountsComponent},
   { path: 'exerciseChange/:id', component: ExerciseChangeComponent},
   { path: 'difficultyLevelChange', component: DifficultyLevelChangeComponent},
-  { path: 'statisticsAdmin', component: StatisticsAdminComponent}
+  { path: 'statisticsAdmin', component: StatisticsAdminComponent},
+  { path: 'info', component: InfoComponent}
 ];
 
 @NgModule({

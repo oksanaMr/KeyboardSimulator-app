@@ -10,12 +10,13 @@ import { MatRadioChange } from '@angular/material';
     styleUrls: ['./exerciseChange.css']
 })
 
-export class ExerciseChangeComponent{
+export class ExerciseChangeComponent implements OnInit{
 
     levels: string[] = ['Легкий','Средний','Сложный']
     selectLevel = 'Легкий';
     exercise : Exercise;
     flag : boolean;
+    text : string;
 
     diffIdMap = {
         1: this.levels[0],
@@ -35,14 +36,17 @@ export class ExerciseChangeComponent{
             this.flag = false;
         }
         else {
-            this.exerciseService.getExercise(id).subscribe(exercise => this.exercise = exercise);
+            this.exerciseService.getExercise(id).subscribe(exercise => {this.exercise = exercise;
+                console.log(exercise);} );
+            console.log(this.exercise);
             this.flag = true;
             this.selectLevel = this.diffIdMap[this.exercise.diff_id];
+            this.text = this.exercise.textF + this.exercise.textE;
         }
     }
 
     generateExercise(){
-        this.exerciseService.generateExercise(this.exercise).subscribe(exercise => this.exercise = exercise);
+        this.exerciseService.generateExercise(this.exercise.diff_id).subscribe(exercise => this.exercise = exercise);
     }
 
     saveExercise(){

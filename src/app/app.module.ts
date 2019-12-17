@@ -30,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material';
 import { GoogleChartsModule } from 'angular-google-charts'
+import { InfoComponent } from './info/info';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { GoogleChartsModule } from 'angular-google-charts'
     DifficultyLevelChangeComponent,
     ExerciseAdminComponent,
     StatisticsAdminComponent,
-    ExerciseChangeComponent
+    ExerciseChangeComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

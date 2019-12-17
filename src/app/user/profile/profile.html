@@ -13,8 +13,16 @@
                     <a class="nav-link" [routerLink]="['/statistics',user.id]">Статистика</a>
                 </li>
             </ul>
+            <span class="navbar-text">
+                Учетная запись: {{user.login}}
+            </span>
         </div>
     </nav>
+    <div class="col-md-1 offset-md-10">
+        <a mat-icon-button color="primary" routerLink="/info">
+            <mat-icon style="font-size: 30px">info</mat-icon>
+        </a>
+    </div>
     <div class="container">
         <div class="row align-items-center" style="height: 130px">
             <div class="mx-auto">
