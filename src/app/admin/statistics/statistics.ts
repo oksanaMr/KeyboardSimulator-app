@@ -25,7 +25,10 @@ export class StatisticsAdminComponent implements OnInit{
 
     title = 'Статистика';
     type = 'LineChart';
-    data = [];
+    dataDone = [];
+    dataMistakes = [];
+    dataTime = [];
+    dataSpeed = [];
     /*[
     ['1',789,8,10,56],
     ['2',456,1,36,233],
@@ -36,7 +39,10 @@ export class StatisticsAdminComponent implements OnInit{
     ['7',663,4,45,156],
     ['8',23,5,39,256],
     ];*/
-    columnNames = ['Упражнение','Выполнено','Ошибки','Время','Скорость'];
+    columnNames1 = ['Упражнение','Выполнено'];
+    columnNames2 = ['Упражнение','Ошибки'];
+    columnNames3 = ['Упражнение','Время'];
+    columnNames4 = ['Упражнение','Скорость'];
     options = {
         hAxis : {
             title : 'Упражнение'
@@ -44,14 +50,9 @@ export class StatisticsAdminComponent implements OnInit{
         vAxis : {
             title : 'Значения'
         },
-        colors: ['#0000FF', '#009900', '#CC0000', '#DD9900'],
-
     };
     width = 750;
     height = 550;
-
-    view = [1,2,3,4];
-    defaultColors = ['#0000FF', '#009900', '#CC0000', '#DD9900'];
 
     constructor(
         private router: Router,
@@ -61,7 +62,10 @@ export class StatisticsAdminComponent implements OnInit{
     ngOnInit(){
         this.statisticsService.getAllStatistics().subscribe(userStatistics => {this.dataSource = new MatTableDataSource(userStatistics);
         for(let i=0; i< userStatistics.length; i++){
-            this.data.push(Object.values(userStatistics[i]));
+            this.dataDone.push([userStatistics[i].id,userStatistics[i].count]);
+            this.dataMistakes.push([userStatistics[i].id,userStatistics[i].num_of_mistakes]);
+            this.dataTime.push([userStatistics[i].id,userStatistics[i].exercise_time]);
+            this.dataSpeed.push([userStatistics[i].id,userStatistics[i].speed]);
         }});
     }
 
@@ -71,29 +75,6 @@ export class StatisticsAdminComponent implements OnInit{
         }
         else {
             this.condition = false;
-        }
-    }
-
-    onSelect($event: ChartEvent){
-        console.log($event);
-        if($event.row == null){
-            console.log($event.row == null);
-            if($event.column == this.view[$event.column - 1]){
-                console.log($event.column == this.view[$event.column - 1]);
-                this.view[$event.column - 1] = null;
-                console.log(this.view[$event.column - 1]);
-                this.options.colors[$event.column - 1] = '#CCCCCC';
-                console.log(this.options.colors[$event.column - 1]);
-                const wrapper = this.chart.wrapper;
-                wrapper.setView("0");
-                wrapper.draw(document.getElementById('charts'));
-            }
-            else{
-                this.view[$event.column - 1] = $event.column;
-                this.options.colors[$event.column - 1] = this.defaultColors[$event.column - 1];
-                const wrapper = this.chart.wrapper;
-                wrapper.draw(document.getElementById('charts'));
-            }
         }
     }
 }

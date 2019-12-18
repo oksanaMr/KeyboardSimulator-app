@@ -23,11 +23,38 @@
     <div class="container">
         <div class="row">
             <div *ngIf="!condition" class="col-md-8 mt-3 mat-elevation-z8">
-                <google-chart #chart (select)="onSelect($event)" id="charts"
+                <google-chart #chart
                     [title]="title"
                     [type]="type"
-                    [data]="data"
-                    [columnNames]="columnNames"
+                    [data]="dataDone"
+                    [columnNames]="columnNames1"
+                    [options]="options"
+                    [width]="width"
+                    [height]="height">
+                </google-chart> 
+                <google-chart #chart
+                    [title]="title"
+                    [type]="type"
+                    [data]="dataMistakes"
+                    [columnNames]="columnNames2"
+                    [options]="options"
+                    [width]="width"
+                    [height]="height">
+                </google-chart> 
+                <google-chart #chart
+                    [title]="title"
+                    [type]="type"
+                    [data]="dataTime"
+                    [columnNames]="columnNames3"
+                    [options]="options"
+                    [width]="width"
+                    [height]="height">
+                </google-chart> 
+                <google-chart #chart
+                    [title]="title"
+                    [type]="type"
+                    [data]="dataSpeed"
+                    [columnNames]="columnNames4"
                     [options]="options"
                     [width]="width"
                     [height]="height">

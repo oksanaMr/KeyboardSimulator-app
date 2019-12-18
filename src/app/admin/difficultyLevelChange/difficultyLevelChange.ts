@@ -15,7 +15,7 @@ export class DifficultyLevelChangeComponent{
 
     levels: string[] = ['Легкий','Средний','Сложный']
     selectLevel = 'Легкий';
-    diff_id: number = 1;
+    diff_id: number;
     difficulty: Dificulty
     keyboardArea: KeyboardArea[] = [];
     allKeyboardArea: KeyboardArea[];
@@ -51,7 +51,7 @@ export class DifficultyLevelChangeComponent{
         };
         console.log(this.diff_id);
         this.exerciseService.getDiff(this.diff_id).subscribe(difficulty => this.difficulty = difficulty);
-        this.exerciseService.getKeyboardArea(1).subscribe(areas => {this.keyboardArea = areas;
+        this.exerciseService.getKeyboardArea(this.diff_id).subscribe(areas => {this.keyboardArea = areas;
             for(let i = 0; i< areas.length; i++){
                 this.kAreaMap[areas[i].id] = true;
             }});
@@ -68,7 +68,7 @@ export class DifficultyLevelChangeComponent{
                     this.keyboardArea.push(this.allKeyboardArea[i]);
                 };
             };
-            this.exerciseService.setKeyboardArea(this.diff_id, this.keyboardArea).subscribe();
+            this.exerciseService.saveDiff(this.difficulty, this.keyboardArea).subscribe();
         }
     }
 }
