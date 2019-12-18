@@ -6,3 +6,26 @@
 table {
     width: 100%;
 }
+body {
+    background-image: url(https://sun9-58.userapi.com/c855536/v855536748/1a32dd/6T-T9CtkD-k.jpg);
+    background-color: lavender;
+    background-repeat:repeat;
+    background-attachment:fixed;
+    background-position: left 1px;
+    }
+
+.col-md-8.mt-3.mat-elevation-z8{
+    background: rgba(255, 255, 255, 0.3);
+    color: black;
+}
+
+.card.border-primary{
+    background: rgba(255, 255, 255, 0.3);
+    border-color: black;
+    color: black;
+}
+
+nav {
+    background: rgba(155, 136, 159, 0.8);
+    color: black;
+}

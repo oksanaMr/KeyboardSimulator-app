@@ -14,7 +14,6 @@ import { ExerciseChangeComponent } from './admin/exerciseChange/exerciseChange';
 import { DifficultyLevelChangeComponent } from './admin/difficultyLevelChange/difficultyLevelChange';
 import { StatisticsAdminComponent } from './admin/statistics/statistics';
 import { InfoComponent } from './info/info';
-import { SoundControllerService } from './sound-controller.service';
 
 
 const routes: Routes = [
@@ -25,16 +24,16 @@ const routes: Routes = [
   { path: 'do-exercise/:userId/:id', component: DoExerciseComponent },
   { path: 'dataChange/:id', component: DataChangeComponent },
   { path: 'statistics/:id', component: StatisticsComponent },
-  { path: 'exerciseAdmin', component: ExerciseAdminComponent },
-  { path: 'accounts', component: AccountsComponent },
-  { path: 'exerciseChange/:id', component: ExerciseChangeComponent },
-  { path: 'difficultyLevelChange/:id', component: DifficultyLevelChangeComponent },
-  { path: 'statisticsAdmin', component: StatisticsAdminComponent },
-  { path: 'info', component: InfoComponent }
+  { path: 'exerciseAdmin', component: ExerciseAdminComponent},
+  { path: 'accounts', component: AccountsComponent},
+  { path: 'exerciseChange/:id', component: ExerciseChangeComponent},
+  { path: 'difficultyLevelChange/:id', component: DifficultyLevelChangeComponent},
+  { path: 'statisticsAdmin', component: StatisticsAdminComponent},
+  { path: 'info', component: InfoComponent}
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
