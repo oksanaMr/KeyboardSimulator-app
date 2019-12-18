@@ -43,7 +43,19 @@ export class ExerciseService {
     }
 
     public newExercise(textF: string, textE: string, diff_id: number){
-        const body = { textF: textF, textE : textE, diff_id: diff_id};
-        return this.http.post<Exercise>(`${BASE_PATH}/newExercise`,body);
+        if (textE == ""){textE =" "}
+        return this.http.get<Exercise>(`${BASE_PATH}/newExercise/${textF}/${textE}/${diff_id}`);
+    }
+
+    public getKeyboardArea(diff_id: number){
+        return this.http.get<KeyboardArea[]>(`http://localhost:8080/diff_key/getZone/${diff_id}`);
+    }
+
+    public saveDiff(diff: Dificulty, kArea1 : KeyboardArea, kArea2 : KeyboardArea,kArea3 : KeyboardArea,kArea4 : KeyboardArea){
+        return this.http.get<Dificulty>(`http://localhost:8080/diff_key/setdif/${diff}/${kArea1}/${kArea2}${kArea3}${kArea4}`);
+    }
+
+    public getAllKeyboardArea(){
+        return this.http.get<KeyboardArea[]>(`${BASE_PATH_AREA}`);
     }
 }
