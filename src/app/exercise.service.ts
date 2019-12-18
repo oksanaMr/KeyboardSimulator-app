@@ -5,11 +5,9 @@ import { Observable } from 'rxjs';
 
 import { Exercise } from '@app/model/exercise';
 import { Dificulty } from './models/dificulty';
-import { KeyboardArea } from './models/keyboardArea';
 
 const BASE_PATH = 'http://localhost:8080/exercise';
 const BASE_PATH_DIFF = 'http://localhost:8080/dificulty_lvl';
-const BASE_PATH_AREA = 'http://localhost:8080/keyboard_area';
 
 @Injectable()
 export class ExerciseService {

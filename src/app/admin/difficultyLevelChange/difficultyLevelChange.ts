@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ExerciseService } from 'src/app/exercise.service';
-import { Dificulty } from '@app/model/dificulty';
-import { KeyboardArea } from '@app/model/keyboardArea';
-import { MatRadioChange } from '@angular/material';
 
 @Component({
     selector: 'app-difficultyLevelChange',
@@ -35,8 +31,7 @@ export class DifficultyLevelChangeComponent{
 
     constructor(
         private router: Router,
-        private activateRoute: ActivatedRoute,
-        private exerciseService: ExerciseService){}
+        private activateRoute: ActivatedRoute){}
 
     ngOnInit(){
         this.id = this.activateRoute.snapshot.params['id'];
