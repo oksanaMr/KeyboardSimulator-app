@@ -49,11 +49,11 @@ export class ExerciseService {
     }
 
     public getKeyboardArea(diff_id: number){
-        return this.http.get<KeyboardArea[]>(`${BASE_PATH}/getExercise/${diff_id}`);
+        return this.http.get<KeyboardArea[]>(`http://localhost:8080/diff_key/getZone/${diff_id}`);
     }
 
     public setKeyboardArea(diff_id: number, keyboardArea : KeyboardArea[]){
-        return this.http.get<KeyboardArea[]>(`${BASE_PATH}/${diff_id}/${keyboardArea}`);
+        return this.http.get<KeyboardArea[]>(`http://localhost:8080/diff_key/setdif/${diff_id}/${keyboardArea}`);
     }
 
     public getAllKeyboardArea(){
