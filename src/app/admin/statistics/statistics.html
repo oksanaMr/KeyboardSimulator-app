@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div *ngIf="!condition" class="col-md-8 mt-3 mat-elevation-z8">
-                <google-chart #chart 
+                <google-chart #chart (select)="onSelect($event)" id="charts"
                     [title]="title"
                     [type]="type"
                     [data]="data"

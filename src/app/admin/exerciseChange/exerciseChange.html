@@ -56,7 +56,10 @@
                 <button class="btn btn-primary col-md-4" on-click="generateExercise()">Сгенерировать упраженение автоматически</button>
             </div>
         <div class="row mt-3">
-            <button class="btn btn-primary col-md-4 mr-5" on-click="selectExercise">Загрузить упражнение из файла</button>
+            <div>
+            <label for="fileLoad" class="btn btn-primary col-md-4 mr-5">Загрузить упражнение из файла</label>
+            <input type="file" accept=".txt" id="fileLoad" name="fileLoad" style="visibility: hidden" (change)="handleFiles($event.target.files)">
+        </div>
             <button class="btn btn-primary col-md-1.5 offset-md-4" on-click="saveExercise()">Сохранить</button>
         </div>
     </div>

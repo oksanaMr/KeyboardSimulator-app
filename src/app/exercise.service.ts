@@ -5,9 +5,11 @@ import { Observable } from 'rxjs';
 
 import { Exercise } from '@app/model/exercise';
 import { Dificulty } from './models/dificulty';
+import { KeyboardArea } from './models/keyboardArea';
 
 const BASE_PATH = 'http://localhost:8080/exercise';
 const BASE_PATH_DIFF = 'http://localhost:8080/dificulty_lvl';
+const BASE_PATH_AREA = 'http://localhost:8080/keyboard_area';
 
 @Injectable()
 export class ExerciseService {
@@ -43,7 +45,18 @@ export class ExerciseService {
     }
 
     public newExercise(textF: string, textE: string, diff_id: number){
-        const body = { textF: textF, textE : textE, diff_id: diff_id};
-        return this.http.post<Exercise>(`${BASE_PATH}/newExercise`,body);
+        return this.http.get<Exercise>(`${BASE_PATH}/newExercise/${textF}/${textE}/${diff_id}`);
+    }
+
+    public getKeyboardArea(diff_id: number){
+        return this.http.get<KeyboardArea[]>(`${BASE_PATH}/getExercise/${diff_id}`);
+    }
+
+    public setKeyboardArea(diff_id: number, keyboardArea : KeyboardArea[]){
+        return this.http.get<KeyboardArea[]>(`${BASE_PATH}/${diff_id}/${keyboardArea}`);
+    }
+
+    public getAllKeyboardArea(){
+        return this.http.get<KeyboardArea[]>(`${BASE_PATH_AREA}`);
     }
 }

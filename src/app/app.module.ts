@@ -29,7 +29,7 @@ import { ExerciseChangeComponent } from './admin/exerciseChange/exerciseChange';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material';
-import { GoogleChartsModule } from 'angular-google-charts'
+import { GoogleChartsModule } from 'angular-google-charts';
 import { InfoComponent } from './info/info';
 
 @NgModule({
@@ -64,7 +64,7 @@ import { InfoComponent } from './info/info';
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
-    GoogleChartsModule
+    GoogleChartsModule,
   ],
   entryComponents: [
     TrainResultComponent

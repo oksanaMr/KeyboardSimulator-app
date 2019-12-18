@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ExerciseService } from 'src/app/exercise.service';
 import { Exercise } from '@app/model/exercise';
 import { MatRadioChange } from '@angular/material';
+import {Subject} from 'rxjs';
 
 @Component({
     selector: 'app-exerciseChange',
@@ -11,6 +12,7 @@ import { MatRadioChange } from '@angular/material';
 })
 
 export class ExerciseChangeComponent implements OnInit{
+    private _success = new Subject<string>();
 
     levels: string[] = ['Легкий','Средний','Сложный']
     selectLevel = 'Легкий';
@@ -39,6 +41,9 @@ export class ExerciseChangeComponent implements OnInit{
 
     id:number;
 
+    fileToUpload: File = null;
+    fileReader: FileReader = new FileReader();
+
     constructor(
         private router: Router,
         private activateRoute: ActivatedRoute,
@@ -48,9 +53,7 @@ export class ExerciseChangeComponent implements OnInit{
         this.id = this.activateRoute.snapshot.params['id'];
         if(this.id == 0){
             this.flag = false;
-            console.log(this.id);
             this.exercise.diff_id = 1;
-            console.log(this.exercise);
         }
         else {
             this.exerciseService.getExercise(this.id).subscribe(exercise => {this.exercise = exercise;
@@ -83,12 +86,25 @@ export class ExerciseChangeComponent implements OnInit{
             this.exerciseService.newExercise(this.exercise.textF, this.exercise.textE,this.exercise.diff_id).subscribe(exercise => this.exercise = exercise);
         }
         else{
-            this.exerciseService.saveExercise(this.exercise).subscribe(exercise => this.exercise = exercise);
+            this.exerciseService.saveExercise(this.exercise).subscribe(exercise => this.exercise = exercise,
+                error => {alert(error.message)});
         }
     }
 
     changeLevel($event: MatRadioChange, i: number) {
         this.exercise.diff_id = i + 1;
-        console.log(this.exercise);
     }
+ 
+    handleFiles(files: FileList){
+        console.log(files);
+        this.fileToUpload = files.item(0);
+        console.log(this.fileToUpload);
+        this.fileReader.readAsText(this.fileToUpload);
+        this.fileReader.onloadend = () => {
+            console.log(this.fileReader.result);
+            this.text = this.fileReader.result.toString();
+        }
+        
+    }
+    
 }
