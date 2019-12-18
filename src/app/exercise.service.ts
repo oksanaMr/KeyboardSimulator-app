@@ -53,8 +53,8 @@ export class ExerciseService {
         return this.http.get<KeyboardArea[]>(`http://localhost:8080/diff_key/getZone/${diff_id}`);
     }
 
-    public saveDiff(diff: Dificulty, keyboardArea : KeyboardArea[]){
-        return this.http.get(`http://localhost:8080/diff_key/setdif/${diff}/${keyboardArea}`);
+    public saveDiff(diff: Dificulty, kArea1 : KeyboardArea, kArea2 : KeyboardArea,kArea3 : KeyboardArea,kArea4 : KeyboardArea){
+        return this.http.get<Dificulty>(`http://localhost:8080/diff_key/setdif/${diff}/${kArea1}/${kArea2}${kArea3}${kArea4}`);
     }
 
     public getAllKeyboardArea(){

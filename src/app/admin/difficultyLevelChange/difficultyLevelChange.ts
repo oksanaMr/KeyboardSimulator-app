@@ -19,9 +19,13 @@ export class DifficultyLevelChangeComponent{
     difficulty: Dificulty
     keyboardArea: KeyboardArea[] = [];
     allKeyboardArea: KeyboardArea[];
+    keys: KeyboardArea = {
+        id: 0,
+        description: " "
+    }
 
     kAreaMap = {
-        1: true,
+        1: false,
         2: false,
         3: false,
         4: false
@@ -65,10 +69,15 @@ export class DifficultyLevelChangeComponent{
             this.keyboardArea = [];
             for(let i = 1; i< 5; i++){
                 if(this.kAreaMap[i] == true){
-                    this.keyboardArea.push(this.allKeyboardArea[i]);
-                };
+                    this.keyboardArea.push(this.allKeyboardArea[i-1]);
+                }
+                else{
+                    this.keyboardArea.push(this.keys);
+                }
             };
-            this.exerciseService.saveDiff(this.difficulty, this.keyboardArea).subscribe();
+            console.log(this.difficulty);
+            console.log(this.keyboardArea);
+            this.exerciseService.saveDiff(this.difficulty, this.keyboardArea[0],this.keyboardArea[1],this.keyboardArea[2],this.keyboardArea[3]).subscribe(difficulty => this.difficulty = difficulty);
         }
     }
 }
