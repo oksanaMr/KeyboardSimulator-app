@@ -6,3 +6,9 @@ nav {
     color: black;
     font-weight: bold;
 }
+
+.sound--controller {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}

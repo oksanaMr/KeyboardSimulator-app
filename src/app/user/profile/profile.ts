@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/user';
 import { AuthorizationsService } from 'src/app/authorization.service';
 import { MatRadioChange } from '@angular/material';
+import { SoundControllerService } from 'src/app/sound-controller.service';
 
 @Component({
     selector: 'app-profile',
@@ -25,6 +26,7 @@ export class ProfileComponent implements OnInit {
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public authorizationsService: AuthorizationsService,
+        private sound: SoundControllerService
     ) { }
 
     ngOnInit() {
@@ -34,6 +36,8 @@ export class ProfileComponent implements OnInit {
             this.user = user;
             this.selectLevel = this.diffIdMap[user.diff_id];
         });
+
+        this.sound.soundControl.backgroundMusic();
     }
 
     changeLevel($event: MatRadioChange, i: number) {

@@ -14,7 +14,7 @@ import { ExerciseComponent } from './user/exercise/exercise';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import { MatRadioModule, MatDialogModule } from '@angular/material';
+import { MatRadioModule, MatDialogModule, MatSlideToggleModule } from '@angular/material';
 import { DataChangeComponent } from './user/dataChange/dataChange';
 import { StatisticsService } from './statistics.server';
 import { MatTableModule } from '@angular/material/table';
@@ -27,10 +27,11 @@ import { ExerciseAdminComponent } from './admin/exercise/exercise';
 import { StatisticsAdminComponent } from './admin/statistics/statistics';
 import { ExerciseChangeComponent } from './admin/exerciseChange/exerciseChange';
 import { MatIconModule } from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { InfoComponent } from './info/info';
+import { SoundControllerService } from './sound-controller.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { InfoComponent } from './info/info';
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
-    GoogleChartsModule,
+    MatSlideToggleModule,
+    GoogleChartsModule
   ],
   entryComponents: [
     TrainResultComponent
