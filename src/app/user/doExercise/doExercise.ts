@@ -11,6 +11,7 @@ import { Exercise, MappedExercise } from '@app/model/exercise';
 import { MatDialog } from '@angular/material';
 import { TrainResultComponent } from './train-result/train-result.component';
 import { StatisticsService } from 'src/app/statistics.server';
+import { SoundControllerService } from 'src/app/sound-controller.service';
 
 @Component({
     selector: 'app-do-exercise',
@@ -59,7 +60,8 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
         private route: Router,
         public dialog: MatDialog,
         private exerciseService: ExerciseService,
-        private statisticService: StatisticsService
+        private statisticService: StatisticsService,
+        private sound: SoundControllerService
     ) { }
 
     ngOnInit() {
@@ -141,7 +143,11 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
 
         this.subscription$ = this.keyPress$.subscribe((({ key }: KeyboardEvent) => {
             this.keyboard.setInput(key);
-            this.keyboardTrain.toNextSymbol(key);
+            if (!this.keyboardTrain.toNextSymbol(key)) {
+                this.sound.soundControl.error();
+            } else {
+                this.sound.soundControl.tap();
+            }
         }));
 
         this.subscription$.add(this.lastKeyPress$.subscribe(() => {
@@ -171,7 +177,11 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
                 }
             );
 
+            this.sound.soundControl._backgroundMusic.stop();
+
             if (!train.isErrorState) {
+                this.sound.soundControl.victory();
+
                 this.statisticService.saveStatistic({
                     date: Date.now(),
                     exercise_id: this.exercise.id,
@@ -180,7 +190,11 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
                     num_of_mistakes: train.errors,
                     speed: average,
                 }).subscribe(() => { });
+            } else {
+                this.sound.soundControl.trombone();
             }
+
+            setTimeout(() => this.sound.soundControl._backgroundMusic.play(), 2000);
 
             dialogRef.afterClosed().subscribe(result => {
                 if (result) {
