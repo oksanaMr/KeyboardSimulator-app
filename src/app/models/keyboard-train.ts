@@ -55,10 +55,12 @@ export class KeyboardTrain {
         if (this.currentSymbol === char) {
             this.currentIndex++;
             setTimeout(() => this.checkIsEnd());
+            return true;
         } else {
             this.errors++;
             this.errorIndex = this.currentIndex - this.enteredPart.length;
             setTimeout(() => this.errorIndex = -1, 500);
+            return false;
         }
     }
 

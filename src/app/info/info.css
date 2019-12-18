@@ -1,17 +1,1 @@
 @import url('https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.min.css');
-body {
-    background-image: url(https://sun9-58.userapi.com/c855536/v855536748/1a32dd/6T-T9CtkD-k.jpg);
-    background-color: lavender;
-    background-repeat:repeat;
-    background-attachment:fixed;
-    background-position: left 1px;
-    }
-
-div{
-    background: rgba(255, 255, 255, 0);
-}
-
-.card.col-md-6.mx-auto{
-    border: black;
-    background: rgba(255, 255, 255, 0.2);
-}
