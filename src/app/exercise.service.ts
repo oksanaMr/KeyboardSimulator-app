@@ -45,6 +45,7 @@ export class ExerciseService {
     }
 
     public newExercise(textF: string, textE: string, diff_id: number){
+        if (textE == ""){textE =" "}
         return this.http.get<Exercise>(`${BASE_PATH}/newExercise/${textF}/${textE}/${diff_id}`);
     }
 
