@@ -4,6 +4,7 @@ import { ExerciseService } from 'src/app/exercise.service';
 import { Exercise } from '@app/model/exercise';
 import { MatRadioChange } from '@angular/material';
 import {Subject} from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-exerciseChange',
@@ -87,7 +88,7 @@ export class ExerciseChangeComponent implements OnInit{
         }
         else{
             this.exerciseService.saveExercise(this.exercise).subscribe(exercise => this.exercise = exercise,
-                error => {alert(error.message)});
+                (error: HttpErrorResponse) => {alert(error.headers)});
         }
     }
 
@@ -96,15 +97,11 @@ export class ExerciseChangeComponent implements OnInit{
     }
  
     handleFiles(files: FileList){
-        console.log(files);
         this.fileToUpload = files.item(0);
-        console.log(this.fileToUpload);
         this.fileReader.readAsText(this.fileToUpload);
         this.fileReader.onloadend = () => {
-            console.log(this.fileReader.result);
             this.text = this.fileReader.result.toString();
         }
-        
     }
     
 }

@@ -64,7 +64,7 @@ export class DifficultyLevelChangeComponent{
         else {
             this.keyboardArea = [];
             for(let i = 1; i< 5; i++){
-                if(this.kAreaMap[i] = true){
+                if(this.kAreaMap[i] == true){
                     this.keyboardArea.push(this.allKeyboardArea[i]);
                 };
             };
