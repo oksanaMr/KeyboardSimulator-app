@@ -50,8 +50,4 @@ export class AuthorizationsService {
     public getUsers() {
         return this.http.get<User[]>(`${BASE_PATH}`);
     }
-
-    public updateDiff(user: User){
-        return this.http.put<User>(`${BASE_PATH}/updateDif`,user)
-    }
 }

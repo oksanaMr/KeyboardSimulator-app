@@ -1,4 +1,4 @@
-<div>
+<body><div>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
@@ -19,20 +19,19 @@
                     <mat-icon style="font-size: 30px">info</mat-icon>
                 </a>
             </div>
-            <div class="col-md-4 offset-md-1">
+            <div class="col-md-5 offset-md-1">
                 <div class="row mt-5">
                     <h5>Уровень сложности</h5>
                 </div>
                 <div class="row mt-4">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="card border-primary">
                             <div class="card-body">
                                 <mat-radio-group
                                     aria-labelledby="example-radio-group-label"
                                     class="example-radio-group"
                                     [(ngModel)]="selectLevel">
-                                    <mat-radio-button class="example-radio-button" *ngFor="let level of levels; let i = index" 
-                                        [value]="level" (change)="changeLevel($event,i)">
+                                    <mat-radio-button class="example-radio-button" *ngFor="let level of levels" [value]="level" change="changeLevel(level)">
                                         {{level}} 
                                     </mat-radio-button>
                                 </mat-radio-group>
@@ -41,56 +40,49 @@
                     </div>
                 </div>     
             </div>
-            <div class="col-md-5 mt-4">
-                <form ngNativeValidate> 
+            <div class="col-md-5 mt-5">
+                <form>
                     <div class="row">
                         <div class="col-md-6">
                             <h5>Количество ошибок</h5>
                         </div>
                         <div class="col">
-                            <input type="number" class="form-control" name="mistakes" step="1" min="0" max="10" [(ngModel)]="difficulty.max_num_of_mistakes" required>
+                            <input type="number" step="1" min="0" max="10" value="1">
                         </div>
                     </div>
                     <div class="row mt-5">
                         <div class="col-md-6">
                             <h5>Время нажатия</h5>
                         </div>
-                        <div class="col">
-                            <input type="number" class="form-control" name="pressTime" step="1" min="1" max="3" [(ngModel)]="difficulty.pressing_time"required>
+                        <div class="col-md-2">
+                            <input type="number" step="1" min="1" max="3" value="1">
                         </div>
                     </div>
                     <div class="row mt-5">
                         <div class="col-md-6">
-                            <h5>Максимальная длина упражнения</h5>
+                            <h5>Длина упражнения</h5>
                         </div>
-                        <div class="col">
-                            <input type="number" class="form-control" name="maxLength" step="1" min="50" max="400" [(ngModel)]="difficulty.max_length" required>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <h5>Минимальная длина упражнения</h5>
-                        </div>
-                        <div class="col">
-                            <input type="number" class="form-control" name="minLength" step="1" min="50" max="400" [(ngModel)]="difficulty.min_length" required>
+                        <div class="col-md-2">
+                            <input type="number" step="1" min="50" max="400" value="50">
                         </div>
                     </div>
-                    <div class="row mt-4 pb-4">
+                    <div class="row mt-5 pb-5">
                         <div class="col-md-6 mt-5">
                             <h5>Зоны клавиатуры</h5>
                         </div>
                         <div class="col-md-2">
-                            <mat-checkbox class="example-margin" name="area1" [(ngModel)]="kAreaMap[1]">1</mat-checkbox>
-                            <mat-checkbox class="example-margin" name="area2" [(ngModel)]="kAreaMap[2]">2</mat-checkbox>
-                            <mat-checkbox class="example-margin" name="area3" [(ngModel)]="kAreaMap[3]">3</mat-checkbox>
-                            <mat-checkbox class="example-margin" name="area4" [(ngModel)]="kAreaMap[4]">4</mat-checkbox>
+                            <mat-checkbox class="example-margin" name="area1" [(ngModel)]="area1">1</mat-checkbox>
+                            <mat-checkbox class="example-margin" name="area2" [(ngModel)]="area2">2</mat-checkbox>
+                            <mat-checkbox class="example-margin" name="area3" [(ngModel)]="area3">3</mat-checkbox>
+                            <mat-checkbox class="example-margin" name="area4" [(ngModel)]="area4">4</mat-checkbox>
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <button type="submit" class="btn btn-primary col-md-1.5 mx-auto" on-click="saveLevel()">Сохранить</button>
+                    <div class="row mt-5 ">
+                        <button class="btn btn-primary col-md-1.5 mx-auto" on-click="selectExercise">Сохранить</button>
                     </div>
                 </form>
             </div>
         </div> 
+        
     </div>
-</div>
+</div></body>
