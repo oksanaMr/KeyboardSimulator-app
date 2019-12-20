@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthorizationsService } from 'src/app/authorization.service';
-import {Subscription} from 'rxjs';
 import { User } from 'src/app/user';
 
 @Component({
@@ -30,8 +29,11 @@ export class DataChangeComponent{
         this.loading = true;
         this.authorizationsService.changeData(this.user).subscribe(user => {
             this.user = user;
+            alert("Данные успешно сохранены");
+        }, error => {
+            if(error.status == 500){alert("Логин уже занят. Придумайте новый");}
+            else {alert("Ошибка соединения с сервером");}
         });
-        this.loading = false;
-        //this.router.navigate(['/profile',this.user.id]);
+        this.loading = false;   
     }
 }

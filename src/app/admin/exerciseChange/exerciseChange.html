@@ -21,9 +21,10 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <h5>Ввод текста упраженения</h5>
+                    <h5>Ввод текста упраженения <h6>({{text.length}} символов)</h6></h5>
+                    
                 </div>
-                <div class="row mt-1">
+                <div class="row">
                     <div class="input-group">
                         <textarea class="form-control" aria-label="textarea" rows="15" [(ngModel)]="text"></textarea>
                     </div>
@@ -54,13 +55,11 @@
         </div> 
         <div class="row mt-5">
                 <button class="btn btn-primary col-md-4" on-click="generateExercise()">Сгенерировать упраженение автоматически</button>
-            </div>
+            <button class="btn btn-primary col-md-2 offset-md-4" on-click="saveExercise()">Сохранить</button>
+        </div>
         <div class="row mt-3">
-            <div>
             <label for="fileLoad" class="btn btn-primary col-md-4 mr-5">Загрузить упражнение из файла</label>
             <input type="file" accept=".txt" id="fileLoad" name="fileLoad" style="visibility: hidden" (change)="handleFiles($event.target.files)">
-        </div>
-            <button class="btn btn-primary col-md-1.5 offset-md-4" on-click="saveExercise()">Сохранить</button>
         </div>
     </div>
 </div>

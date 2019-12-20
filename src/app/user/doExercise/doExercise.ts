@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material';
 import { TrainResultComponent } from './train-result/train-result.component';
 import { StatisticsService } from 'src/app/statistics.server';
 import { SoundControllerService } from 'src/app/sound-controller.service';
+import { AuthorizationsService } from 'src/app/authorization.service';
+import { User } from 'src/app/user';
 
 @Component({
     selector: 'app-do-exercise',
@@ -39,6 +41,7 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
     showKeyboard = true;
 
     userId: string;
+    user: User;
 
     keyboardTrain = new KeyboardTrain(this.pattern);
 
@@ -61,12 +64,13 @@ export class DoExerciseComponent implements OnInit, OnDestroy {
         public dialog: MatDialog,
         private exerciseService: ExerciseService,
         private statisticService: StatisticsService,
+        private authorizationSevice : AuthorizationsService,
         private sound: SoundControllerService
     ) { }
 
     ngOnInit() {
         this.userId = this.router.snapshot.params.userId;
-
+        this.authorizationSevice.getUser(this.userId).subscribe(user => this.user = user);
         this.router.paramMap.pipe(
             map(paramMap => paramMap.get('id')),
             tap(console.log),

@@ -72,7 +72,7 @@
                             <h5>Минимальная длина упражнения</h5>
                         </div>
                         <div class="col">
-                            <input type="number" class="form-control" name="minLength" step="1" min="50" max="400" [(ngModel)]="difficulty.min_length" required>
+                            <input type="number" class="form-control" name="minLength" step="1" min="10" max="100" [(ngModel)]="difficulty.min_length" required>
                         </div>
                     </div>
                     <div class="row mt-4 pb-4">
@@ -84,10 +84,11 @@
                             <mat-checkbox class="example-margin" name="area2" [(ngModel)]="kAreaMap[2]">2</mat-checkbox>
                             <mat-checkbox class="example-margin" name="area3" [(ngModel)]="kAreaMap[3]">3</mat-checkbox>
                             <mat-checkbox class="example-margin" name="area4" [(ngModel)]="kAreaMap[4]">4</mat-checkbox>
+                            <mat-checkbox class="example-margin" name="area5" [(ngModel)]="kAreaMap[5]">5</mat-checkbox>
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <button type="submit" class="btn btn-primary col-md-1.5 mx-auto" on-click="saveLevel()">Сохранить</button>
+                    <div class="row mt-1">
+                        <button type="submit" class="btn btn-primary col-md-4" on-click="saveLevel()">Сохранить</button>
                     </div>
                 </form>
             </div>

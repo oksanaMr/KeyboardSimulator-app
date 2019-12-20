@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthorizationsService } from '../authorization.service';
-import { User } from '../user';
 
 @Component({
     selector: 'app-authorization',
@@ -29,6 +28,8 @@ export class AuthorizationComponent {
                 else { this.router.navigate(['/profile', id]); }//У пользователя идентификатор не равен 1
             },
             error => {
+                if(error.status == 500){alert("Неверный логин или пароль. Попробуйте ввести данные еще раз");}
+                else {alert("Ошибка соединения с сервером");}
                 this.loading = false;
             });
     }

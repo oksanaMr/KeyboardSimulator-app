@@ -10,6 +10,7 @@ import { KeyboardArea } from './models/keyboardArea';
 const BASE_PATH = 'http://localhost:8080/exercise';
 const BASE_PATH_DIFF = 'http://localhost:8080/dificulty_lvl';
 const BASE_PATH_AREA = 'http://localhost:8080/keyboard_area';
+const BASE_PATH_DIFFKEY = 'http://localhost:8080/diff_key';
 
 @Injectable()
 export class ExerciseService {
@@ -53,8 +54,10 @@ export class ExerciseService {
         return this.http.get<KeyboardArea[]>(`http://localhost:8080/diff_key/getZone/${diff_id}`);
     }
 
-    public saveDiff(diff: Dificulty, keyboardArea : KeyboardArea[]){
-        return this.http.get(`http://localhost:8080/diff_key/setdif/${diff}/${keyboardArea}`);
+    public saveDiff(diff_id: number, title: string, max_length: number, min_length: number, mistakes: number, 
+        pressing_time:number, kArea1: number, kArea2: number, kArea3: number, kArea4: number, kArea5: number){
+        return this.http.get<Dificulty>(`${BASE_PATH_DIFFKEY}/setdif/${diff_id}/${title}/${max_length}/${min_length}/
+            ${mistakes}/${pressing_time}/${kArea1}/${kArea2}/${kArea3}/${kArea4}/${kArea5}`);
     }
 
     public getAllKeyboardArea(){

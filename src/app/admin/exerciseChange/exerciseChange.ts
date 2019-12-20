@@ -4,7 +4,6 @@ import { ExerciseService } from 'src/app/exercise.service';
 import { Exercise } from '@app/model/exercise';
 import { MatRadioChange } from '@angular/material';
 import {Subject} from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-exerciseChange',
@@ -66,10 +65,10 @@ export class ExerciseChangeComponent implements OnInit{
 
     generateExercise(){
         this.exerciseService.generateExercise(this.exercise.diff_id).subscribe(exercise => {
-        this.text = exercise.textF + exercise.textE;
-        this.exercise.textF = exercise.textF;
-        this.exercise.textE = exercise.textE;
-        console.log(this.exercise);});
+            this.text = exercise.textF + exercise.textE;
+            this.exercise.textF = exercise.textF;
+            this.exercise.textE = exercise.textE;
+        });
     }
 
     saveExercise(){
@@ -81,14 +80,15 @@ export class ExerciseChangeComponent implements OnInit{
             this.exercise.textF = this.text;
         }
         if(!this.flag){
-            console.log(this.exercise.textF);
-            console.log(this.exercise.textE);
-            console.log(this.exercise.diff_id);
             this.exerciseService.newExercise(this.exercise.textF, this.exercise.textE,this.exercise.diff_id).subscribe(exercise => this.exercise = exercise);
         }
         else{
-            this.exerciseService.saveExercise(this.exercise).subscribe(exercise => this.exercise = exercise,
-                (error: HttpErrorResponse) => {alert(error.headers)});
+            this.exerciseService.saveExercise(this.exercise).subscribe(exercise => {this.exercise = exercise;
+                alert("Упражнение успешно сохранено");},
+                error => { 
+                    if(error.status == 500) {alert("Упражнение на соответствует выбранному уровню сложности!")}
+                    else {alert("Ошибка соединения с сервером")}
+                });
         }
     }
 
