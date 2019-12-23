@@ -3,3 +3,21 @@
 @import url('https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.min.css');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.simple-keyboard .hg-button.hg-red {
+    background: rgba(233, 92, 92, 0.5) !important;
+    color: white !important;
+  }
+  .simple-keyboard .hg-button.hg-blue {
+    background: rgba(103, 116, 228, 0.5) !important;
+    color: white !important;
+  }
+  .simple-keyboard .hg-button.hg-green {
+    background: rgba(112, 226, 121, 0.5) !important;
+    color: white !important;
+  }
+  .simple-keyboard .hg-button.hg-orange {
+    background: rgba(233, 184, 92, 0.5) !important;
+    color: white !important;
+  }
+  

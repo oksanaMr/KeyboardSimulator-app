@@ -1,4 +1,4 @@
-<div>
+<body><div>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
@@ -18,8 +18,12 @@
             </span>
         </div>
     </nav>
-    <div class="col-md-1 offset-md-10">
-        <a mat-icon-button color="primary" routerLink="/info">
+    <div class="d-flex col-md-1 offset-md-10">
+        <a mat-icon-button color="primary" class="d-flex align-items-center justify-content-center"
+            routerLink="/instruction">
+            <mat-icon style="font-size: 30px">help</mat-icon>
+        </a>
+        <a mat-icon-button class="d-flex align-items-center justify-content-center" color="primary" routerLink="/info">
             <mat-icon style="font-size: 30px">info</mat-icon>
         </a>
     </div>
@@ -54,4 +58,4 @@
             <a [routerLink]="['/']" class="btn btn-primary">Выход</a>
         </div>
     </div>
-</div>
+</div></body>

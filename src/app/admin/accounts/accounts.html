@@ -1,59 +1,61 @@
-<div>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="exerciseAdmin">Упражнения</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="accounts">Учетные записи <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="statisticsAdmin">Статистика</a>
-                </li>
-            </ul>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="exerciseAdmin">Упражнения</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="accounts">Учетные записи <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="statisticsAdmin">Статистика</a>
+                    </li>
+                </ul>
                 <a class="btn btn-link" routerLink="/">Выход</a>
+            </div>
+        </nav>
+        <div class="col-md-1 offset-md-10">
+            <a mat-icon-button color="primary" routerLink="/info">
+                <mat-icon style="font-size: 30px">info</mat-icon>
+            </a>
         </div>
-    </nav>
-    <div class="col-md-1 offset-md-10">
-        <a mat-icon-button color="primary" routerLink="/info">
-            <mat-icon style="font-size: 30px">info</mat-icon>
-        </a>
+        <div class="col-md-6 mx-auto mt-2 tableStatistics mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+
+                <ng-container matColumnDef="login">
+                    <th mat-header-cell *matHeaderCellDef> Логин </th>
+                    <td mat-cell *matCellDef="let element">
+                        <a mat-button color="primary" [routerLink]="['/statistics',element.id]">{{element.login}}</a>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="password">
+                    <th mat-header-cell *matHeaderCellDef> Пароль </th>
+                    <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="level">
+                    <th mat-header-cell *matHeaderCellDef> Уровень сложности </th>
+                    <td mat-cell *matCellDef="let element"> {{element.diff_id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef> Удалить </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="warn" aria-label="Delete" (click)="deteleUser(element.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <div class="col-md-3 mx-auto mt-5">
+            <a class="btn btn-primary" routerLink="/registration">Создать нового пользователя</a>
+        </div>
     </div>
-    <div class="col-md-6 mx-auto mt-2 tableStatistics mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
-        
-            <ng-container matColumnDef="login">
-                <th mat-header-cell *matHeaderCellDef> Логин </th>
-                <td mat-cell *matCellDef="let element">
-                    <a mat-button color="primary" [routerLink]="['/statistics',element.id]">{{element.login}}</a>
-                </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="password">
-                <th mat-header-cell *matHeaderCellDef> Пароль </th>
-                <td mat-cell *matCellDef="let element"> {{element.password}} </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="level">
-                <th mat-header-cell *matHeaderCellDef> Уровень сложности </th>
-                <td mat-cell *matCellDef="let element"> {{element.diff_id}} </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="delete">
-                <th mat-header-cell *matHeaderCellDef> Удалить </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="warn" aria-label="Delete" (click)="deteleUser(element.id)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </td>
-            </ng-container>
-            
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-    </div>
-    <div class="col-md-3 mx-auto mt-5">
-        <a class="btn btn-primary" routerLink="/registration">Создать нового пользователя</a>
-    </div>
-</div>
+</body>

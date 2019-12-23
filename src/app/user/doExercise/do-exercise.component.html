@@ -1,19 +1,31 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<body><nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/profile', userId]">Профиль</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/exercise', userId]">Упражения <span
+                <a class="nav-link" [routerLink]="['/exercise', userId]">Упражнения <span
                         class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" [routerLink]="['/statistics', userId]">Статистика</a>
             </li>
         </ul>
+        <span class="navbar-text">
+            Учетная запись: {{user.login}}
+        </span>
     </div>
 </nav>
+<div class="d-flex col-md-1 offset-md-10">
+    <a mat-icon-button color="primary" class="d-flex align-items-center justify-content-center"
+        routerLink="/instruction">
+        <mat-icon style="font-size: 30px">help</mat-icon>
+    </a>
+    <a mat-icon-button class="d-flex align-items-center justify-content-center" color="primary" routerLink="/info">
+        <mat-icon style="font-size: 30px">info</mat-icon>
+    </a>
+</div>
 <div class="train--container d-flex flex-column">
     <div class="main--container container-fluid row no-gutters">
         <div class="sample--container d-flex align-items-center flex-column justify-content-center">
@@ -71,4 +83,4 @@
         class="button d-flex justify-content-center align-items-center btn-danger">
         Остановить
     </div>
-</div>
+</div></body>

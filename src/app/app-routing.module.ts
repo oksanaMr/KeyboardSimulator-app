@@ -15,6 +15,7 @@ import { DifficultyLevelChangeComponent } from './admin/difficultyLevelChange/di
 import { StatisticsAdminComponent } from './admin/statistics/statistics';
 import { InfoComponent } from './info/info';
 import { SoundControllerService } from './sound-controller.service';
+import { InstructionComponent } from './instruction/instruction';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'exerciseChange/:id', component: ExerciseChangeComponent },
   { path: 'difficultyLevelChange/:id', component: DifficultyLevelChangeComponent },
   { path: 'statisticsAdmin', component: StatisticsAdminComponent },
-  { path: 'info', component: InfoComponent }
+  { path: 'info', component: InfoComponent },
+  { path: 'instruction', component: InstructionComponent }
 ];
 
 @NgModule({

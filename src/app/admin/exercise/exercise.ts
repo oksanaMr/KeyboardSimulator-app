@@ -11,18 +11,6 @@ import { SoundControllerService } from 'src/app/sound-controller.service';
 })
 
 export class ExerciseAdminComponent {
-    exerciseData = [{ id: '1' },
-    { id: '16' },
-    { id: '2' },
-    { id: '3' },
-    { id: '4' },
-    { id: '5' },
-    { id: '6' },
-    { id: '7' },
-    { id: '8' },
-    { id: '9' },
-    { id: '10' },
-    { id: '33' }];
 
     displayedColumns: string[] = ['exercise', 'edit', 'delete'];
     dataSource;

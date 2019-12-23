@@ -1,55 +1,57 @@
-<div>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="exerciseAdmin">Упражнения <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="accounts">Учетные записи</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="statisticsAdmin">Статистика</a>
-                </li>
-            </ul>
-            <a class="btn btn-link" routerLink="/">Выход</a>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="exerciseAdmin">Упражнения <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accounts">Учетные записи</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="statisticsAdmin">Статистика</a>
+                    </li>
+                </ul>
+                <a class="btn btn-link" routerLink="/">Выход</a>
+            </div>
+        </nav>
+        <div class="col-md-1 offset-md-10">
+            <a mat-icon-button color="primary" routerLink="/info">
+                <mat-icon style="font-size: 30px">info</mat-icon>
+            </a>
         </div>
-    </nav>
-    <div class="col-md-1 offset-md-10">
-        <a mat-icon-button color="primary" routerLink="/info">
-            <mat-icon style="font-size: 30px">info</mat-icon>
-        </a>
+        <div class="col-md-6 mx-auto mt-2 tableStatistics mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="exercise">
+                    <th mat-header-cell *matHeaderCellDef> Упражнение </th>
+                    <td mat-cell *matCellDef="let element"> Упражнение {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="edit">
+                    <th mat-header-cell *matHeaderCellDef> Редактировать </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="accent" aria-label="Edit" (click)="editExercise(element.id)">
+                            <mat-icon class="mat-18">create</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef> Удалить </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="warn" aria-label="Delete" (click)="deteleExercise(element.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <div class="col-md-3 mx-auto mt-5">
+            <a class="btn btn-primary" [routerLink]="['/exerciseChange',0]">Создать новое упражнение</a>
+        </div>
     </div>
-    <div class="col-md-6 mx-auto mt-2 tableStatistics mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
-            <ng-container matColumnDef="exercise">
-                <th mat-header-cell *matHeaderCellDef> Упражнение </th>
-                <td mat-cell *matCellDef="let element"> Упражнение {{element.id}} </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="edit">
-                <th mat-header-cell *matHeaderCellDef> Редактировать </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="accent" aria-label="Edit" (click)="editExercise(element.id)">
-                        <mat-icon class="mat-18">create</mat-icon>
-                    </button>
-                </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="delete">
-                <th mat-header-cell *matHeaderCellDef> Удалить </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="warn" aria-label="Delete" (click)="deteleExercise(element.id)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </td>
-            </ng-container>
-            
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-    </div>
-    <div class="col-md-3 mx-auto mt-5">
-        <a class="btn btn-primary" [routerLink]="['/exerciseChange',0]">Создать новое упражнение</a>
-    </div>
-</div>
+</body>

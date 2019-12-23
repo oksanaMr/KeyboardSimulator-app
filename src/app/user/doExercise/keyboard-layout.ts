@@ -15,7 +15,46 @@ export const keyboardSettings = {
             ''
         ]
     },
+
     display: {
         "{shiftLeft}": "shift ⇧",
-    }
+    },
+    buttonTheme: [
+        {
+            class: "hg-red",
+            buttons: "К Е Н Г А П Р О М И Т Ь к е н г а п р о м и т ь 4 5 6 7"
+        },
+        {
+            class: "hg-blue",
+            buttons: "У В С Ш Л Б 3 8 у в с ш л б"
+        },
+        {
+            class: "hg-green",
+            buttons: "Ц Ы Ч Щ Д Ю 2 9 ц ы ч щ д ю"
+        },
+        {
+            class: "hg-orange",
+            buttons: "Й Ф Я З Х Ъ Ж Э 1 0 й ф я з х ъ ж э"
+        }
+    ]
+
 }
+
+export const buttonTheme = [
+    {
+        class: "hg-red",
+        buttons: "К Е Н Г А П Р О М И Т Ь к е н г а п р о м и т ь 4 5 6 7"
+    },
+    {
+        class: "hg-blue",
+        buttons: "У В С Ш Л Б 3 8 у в с ш л б"
+    },
+    {
+        class: "hg-green",
+        buttons: "Ц Ы Ч Щ Д Ю 2 9 ц ы ч щ д ю"
+    },
+    {
+        class: "hg-orange",
+        buttons: "Й Ф Я З Х Ъ Ж Э 1 0 й ф я з х ъ ж э"
+    }
+]

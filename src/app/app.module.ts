@@ -32,6 +32,7 @@ import { MatCheckboxModule } from '@angular/material';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { InfoComponent } from './info/info';
 import { SoundControllerService } from './sound-controller.service';
+import { InstructionComponent } from './instruction/instruction';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SoundControllerService } from './sound-controller.service';
     ExerciseAdminComponent,
     StatisticsAdminComponent,
     ExerciseChangeComponent,
-    InfoComponent
+    InfoComponent,
+    InstructionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StatisticsService } from 'src/app/statistics.server';
 import { MatRadioChange, MatTableDataSource } from '@angular/material';
-import { ChartEvent } from 'angular-google-charts';
-import { GoogleChartComponent } from 'angular-google-charts';
 
 @Component({
     selector: 'app-statistics',
@@ -13,32 +11,21 @@ import { GoogleChartComponent } from 'angular-google-charts';
 
 export class StatisticsAdminComponent implements OnInit{
 
-    @ViewChild('chart', {static: false})
-    chart: GoogleChartComponent;
-
     displayedColumns: string[] = ['id_exercise','done', 'mistakes','time','speed'];
     dataSource;
 
-    levels: string[] = ['Таблица','График']
+    levels: string[] = ['Таблица','Графики']
     selectLevel = 'Таблица';
     condition : boolean = true;
 
     title = 'Статистика';
     type = 'LineChart';
+
     dataDone = [];
     dataMistakes = [];
     dataTime = [];
     dataSpeed = [];
-    /*[
-    ['1',789,8,10,56],
-    ['2',456,1,36,233],
-    ['3',32,2,15,180],
-    ['4',896,6,40,64],
-    ['5',123,5,19,100],
-    ['6',412,7,50,145],
-    ['7',663,4,45,156],
-    ['8',23,5,39,256],
-    ];*/
+
     columnNames1 = ['Упражнение','Выполнено'];
     columnNames2 = ['Упражнение','Ошибки'];
     columnNames3 = ['Упражнение','Время'];

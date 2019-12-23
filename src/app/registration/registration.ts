@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthorizationsService } from '../authorization.service';
-import { User } from '../user';
 
 @Component({
 selector: 'app-registration',
@@ -25,6 +24,8 @@ export class RegistrationComponent{
                 this.router.navigate(['/profile', id]);
             },
             error => {
+                if(error.status == 500){alert("Логин уже занят. Придумайте новый");}
+                else {alert("Ошибка соединения с сервером");}
                 this.loading = false;
         });
     }

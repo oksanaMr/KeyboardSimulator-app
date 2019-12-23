@@ -1,4 +1,4 @@
-<div>
+<body><div>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
@@ -6,7 +6,8 @@
                     <a class="nav-link" [routerLink]="['/profile',user.id]">Профиль</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['/exercise',user.id]">Упражения <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" [routerLink]="['/exercise',user.id]">Упражнения <span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/statistics',user.id]">Статистика</a>
@@ -15,10 +16,14 @@
             <span class="navbar-text">
                 Учетная запись: {{user.login}}
             </span>
-        </div>  
+        </div>
     </nav>
     <div class="col-md-1 offset-md-10">
-        <a mat-icon-button color="primary" routerLink="/info">
+        <a mat-icon-button color="primary" class="d-flex align-items-center justify-content-center"
+            routerLink="/instruction">
+            <mat-icon style="font-size: 30px">help</mat-icon>
+        </a>
+        <a mat-icon-button class="d-flex align-items-center justify-content-center" color="primary" routerLink="/info">
             <mat-icon style="font-size: 30px">info</mat-icon>
         </a>
     </div>
@@ -43,4 +48,4 @@
             <button (click)="selectExercise()" class="btn btn-primary">Выбрать</button>
         </div>
     </div>
-</div>
+</div></body>

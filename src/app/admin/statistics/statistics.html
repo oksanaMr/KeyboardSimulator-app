@@ -1,113 +1,90 @@
-<div>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="exerciseAdmin">Упражнения</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="accounts">Учетные записи</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/statisticsAdmin">Статистика<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <a class="btn btn-link" routerLink="/">Выход</a>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="exerciseAdmin">Упражнения</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accounts">Учетные записи</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/statisticsAdmin">Статистика<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <a class="btn btn-link" routerLink="/">Выход</a>
+            </div>
+        </nav>
+        <div class="col-md-1 offset-md-10">
+            <a mat-icon-button color="primary" routerLink="/info">
+                <mat-icon style="font-size: 30px">info</mat-icon>
+            </a>
         </div>
-    </nav>
-    <div class="col-md-1 offset-md-10">
-        <a mat-icon-button color="primary" routerLink="/info">
-            <mat-icon style="font-size: 30px">info</mat-icon>
-        </a>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div *ngIf="!condition" class="col-md-8 mt-3 mat-elevation-z8">
-                <google-chart #chart
-                    [title]="title"
-                    [type]="type"
-                    [data]="dataDone"
-                    [columnNames]="columnNames1"
-                    [options]="options"
-                    [width]="width"
-                    [height]="height">
-                </google-chart> 
-                <google-chart #chart
-                    [title]="title"
-                    [type]="type"
-                    [data]="dataMistakes"
-                    [columnNames]="columnNames2"
-                    [options]="options"
-                    [width]="width"
-                    [height]="height">
-                </google-chart> 
-                <google-chart #chart
-                    [title]="title"
-                    [type]="type"
-                    [data]="dataTime"
-                    [columnNames]="columnNames3"
-                    [options]="options"
-                    [width]="width"
-                    [height]="height">
-                </google-chart> 
-                <google-chart #chart
-                    [title]="title"
-                    [type]="type"
-                    [data]="dataSpeed"
-                    [columnNames]="columnNames4"
-                    [options]="options"
-                    [width]="width"
-                    [height]="height">
-                </google-chart> 
-            </div>
-            <div *ngIf="condition" class="col-md-8 mt-3 mat-elevation-z8 tableStatistics">
-                <table  mat-table [dataSource]="dataSource">
-
-                    <ng-container matColumnDef="id_exercise">
-                    <th mat-header-cell *matHeaderCellDef> № Упражнения </th>
-                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="done">
-                    <th mat-header-cell *matHeaderCellDef> Выполнено </th>
-                    <td mat-cell *matCellDef="let element"> {{element.count}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="mistakes">
-                    <th mat-header-cell *matHeaderCellDef> Ошибки </th>
-                    <td mat-cell *matCellDef="let element"> {{element.num_of_mistakes}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="time">
-                    <th mat-header-cell *matHeaderCellDef> Время </th>
-                    <td mat-cell *matCellDef="let element"> {{element.exercise_time}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="speed">
-                        <th mat-header-cell *matHeaderCellDef> Скорость </th>
-                        <td mat-cell *matCellDef="let element"> {{element.speed}} </td>
-                    </ng-container>
-                
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-            </div>
-            <div class="col-md-3 offset-md-1 mt-5">
-                <div class="row mt-5">
-                    <p>Вид отображения статистики</p>
+        <div class="container">
+            <div class="row">
+                <div *ngIf="!condition" class="col-md-8 mt-3 mat-elevation-z8">
+                    <google-chart #chart [title]="title" [type]="type" [data]="dataDone" [columnNames]="columnNames1"
+                        [options]="options" [width]="width" [height]="height">
+                    </google-chart>
+                    <google-chart #chart [title]="title" [type]="type" [data]="dataMistakes"
+                        [columnNames]="columnNames2" [options]="options" [width]="width" [height]="height">
+                    </google-chart>
+                    <google-chart #chart [title]="title" [type]="type" [data]="dataTime" [columnNames]="columnNames3"
+                        [options]="options" [width]="width" [height]="height">
+                    </google-chart>
+                    <google-chart #chart [title]="title" [type]="type" [data]="dataSpeed" [columnNames]="columnNames4"
+                        [options]="options" [width]="width" [height]="height">
+                    </google-chart>
                 </div>
-                <div class="row mt-4">
-                    <div class="col-md-8">
-                        <div class="card border-primary">
-                            <div class="card-body">
-                                <mat-radio-group
-                                    aria-labelledby="example-radio-group-label"
-                                    class="example-radio-group"
-                                    [(ngModel)]="selectLevel">
-                                    <mat-radio-button class="example-radio-button" *ngFor="let level of levels" [value]="level" (change)="changeLevel($event)">
-                                        {{level}} 
-                                    </mat-radio-button>
-                                </mat-radio-group>
+                <div *ngIf="condition" class="col-md-8 mt-3 mat-elevation-z8 tableStatistics">
+                    <table mat-table [dataSource]="dataSource">
+
+                        <ng-container matColumnDef="id_exercise">
+                            <th mat-header-cell *matHeaderCellDef> № Упражнения </th>
+                            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="done">
+                            <th mat-header-cell *matHeaderCellDef> Выполнено </th>
+                            <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="mistakes">
+                            <th mat-header-cell *matHeaderCellDef> Ошибки </th>
+                            <td mat-cell *matCellDef="let element"> {{element.num_of_mistakes}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="time">
+                            <th mat-header-cell *matHeaderCellDef> Время </th>
+                            <td mat-cell *matCellDef="let element"> {{element.exercise_time}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="speed">
+                            <th mat-header-cell *matHeaderCellDef> Скорость </th>
+                            <td mat-cell *matCellDef="let element"> {{element.speed}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+                <div class="col-md-3 offset-md-1 mt-5">
+                    <div class="row mt-5">
+                        <p>Вид отображения статистики</p>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-8">
+                            <div class="card border-primary">
+                                <div class="card-body">
+                                    <mat-radio-group aria-labelledby="example-radio-group-label"
+                                        class="example-radio-group" [(ngModel)]="selectLevel">
+                                        <mat-radio-button class="example-radio-button" *ngFor="let level of levels"
+                                            [value]="level" (change)="changeLevel($event)">
+                                            {{level}}
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -115,4 +92,4 @@
             </div>
         </div>
     </div>
-</div>
+</body>
