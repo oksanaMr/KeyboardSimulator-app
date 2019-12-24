@@ -15,7 +15,8 @@
                 <label for="login">Логин</label>
                 <input type="text" class="form-control" name="login" [(ngModel)]="loginu" #login="ngModel" required
                     maxlength="30" />
-                <div *ngIf="f.submitted && !login.valid" class="invalid-feedback d-block">Требуется ввести логин</div>
+                <div *ngIf="f.submitted && !login.valid" class="invalid-feedback d-block">Требуется ввести логин
+                </div>
             </div>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
                 <label for="password">Пароль</label>
