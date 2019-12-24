@@ -12,7 +12,7 @@ import { SoundControllerService } from 'src/app/sound-controller.service';
 
 export class ExerciseAdminComponent {
 
-    displayedColumns: string[] = ['exercise', 'edit', 'delete'];
+    displayedColumns: string[] = ['exercise', 'diff_id','edit', 'delete'];
     dataSource;
 
     constructor(
@@ -24,7 +24,6 @@ export class ExerciseAdminComponent {
 
     ngOnInit() {
         this.exerciseService.getAllExercise().subscribe(exerciseData => this.dataSource = new MatTableDataSource(exerciseData));
-        this.sound.soundControl.backgroundMusic();
     }
 
     editExercise(id: number) {

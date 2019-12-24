@@ -1,4 +1,4 @@
-<body>
+<body style="background-image: url(https://sun9-58.userapi.com/c855536/v855536748/1a32dd/6T-T9CtkD-k.jpg)">
     <div>
         <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -23,7 +23,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div *ngIf="!condition" class="col-md-8 mt-3 mat-elevation-z8">
+                <div *ngIf="!condition" class="col-md-8 mt-3 mat-elevation-z8" style="background-image: url(https://sun9-58.userapi.com/c855536/v855536748/1a32dd/6T-T9CtkD-k.jpg)">
                     <google-chart #chart [title]="title" [type]="type" [data]="dataDone" [columnNames]="columnNames1"
                         [options]="options" [width]="width" [height]="height">
                     </google-chart>
@@ -37,7 +37,7 @@
                         [options]="options" [width]="width" [height]="height">
                     </google-chart>
                 </div>
-                <div *ngIf="condition" class="col-md-8 mt-3 mat-elevation-z8 tableStatistics">
+                <div *ngIf="condition" class="col-md-8 mt-3 tableStatistics">
                     <table mat-table [dataSource]="dataSource">
 
                         <ng-container matColumnDef="id_exercise">

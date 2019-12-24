@@ -80,7 +80,12 @@ export class ExerciseChangeComponent implements OnInit{
             this.exercise.textF = this.text;
         }
         if(!this.flag){
-            this.exerciseService.newExercise(this.exercise.textF, this.exercise.textE,this.exercise.diff_id).subscribe(exercise => this.exercise = exercise);
+            this.exerciseService.newExercise(this.exercise.textF, this.exercise.textE,this.exercise.diff_id).subscribe(exercise => {this.exercise = exercise;
+                alert("Упражнение успешно сохранено");},
+                error => { 
+                    if(error.status == 500) {alert("Упражнение на соответствует выбранному уровню сложности!")}
+                    else {alert("Ошибка соединения с сервером")}
+                });
         }
         else{
             this.exerciseService.saveExercise(this.exercise).subscribe(exercise => {this.exercise = exercise;

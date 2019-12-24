@@ -38,8 +38,8 @@ export class StatisticsAdminComponent implements OnInit{
             title : 'Значения'
         },
     };
-    width = 750;
-    height = 550;
+    width = 700;
+    height = 400;
 
     constructor(
         private router: Router,

@@ -34,7 +34,7 @@ export const keyboardSettings = {
         },
         {
             class: "hg-orange",
-            buttons: "Й Ф Я З Х Ъ Ж Э 1 0 й ф я з х ъ ж э"
+            buttons: "Й Ф Я З Х Ъ Ж Э 1 0 й ф я з х ъ ж э ё Ё"
         }
     ]
 
@@ -55,6 +55,6 @@ export const buttonTheme = [
     },
     {
         class: "hg-orange",
-        buttons: "Й Ф Я З Х Ъ Ж Э 1 0 й ф я з х ъ ж э"
+        buttons: "Й Ф Я З Х Ъ Ж Э 1 0 й ф я з х ъ ж э ё Ё"
     }
 ]

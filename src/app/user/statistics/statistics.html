@@ -30,22 +30,22 @@
                 <mat-icon style="font-size: 30px">info</mat-icon>
             </a>
         </div>
-        <div class="col-md-6 mx-auto mt-3 tableStatistics mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource$ | async">
+        <div class="col-md-6 mx-auto mt-3 tableStatistics">
+            <table mat-table [dataSource]="dataSource">
 
                 <ng-container matColumnDef="date">
                     <th mat-header-cell *matHeaderCellDef> Дата </th>
-                    <td mat-cell *matCellDef="let element"> {{element.date | date}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="id_exercise">
+                <ng-container matColumnDef="exercise_id">
                     <th mat-header-cell *matHeaderCellDef> № упражения </th>
-                    <td mat-cell *matCellDef="let element"> {{element.id_exercise}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.exercise_id}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="mistakes">
                     <th mat-header-cell *matHeaderCellDef> Ошибки </th>
-                    <td mat-cell *matCellDef="let element"> {{element.mistakes}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.num_of_mistakes}}/{{exerciseMap.get(element.exercise_id)}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="time">

@@ -21,11 +21,16 @@
                 <mat-icon style="font-size: 30px">info</mat-icon>
             </a>
         </div>
-        <div class="col-md-6 mx-auto mt-2 tableStatistics mat-elevation-z8">
+        <div class="col-md-6 mx-auto mt-2 tableStatistics">
             <table mat-table [dataSource]="dataSource">
                 <ng-container matColumnDef="exercise">
                     <th mat-header-cell *matHeaderCellDef> Упражнение </th>
                     <td mat-cell *matCellDef="let element"> Упражнение {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="diff_id">
+                    <th mat-header-cell *matHeaderCellDef> Сложность </th>
+                    <td mat-cell *matCellDef="let element"> {{element.diff_id}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="edit">

@@ -21,7 +21,7 @@ export class ExerciseService {
         return this.http.get<Exercise[]>(`${BASE_PATH}/${id_level}`);
     }
 
-    public getExercise(id_exercise: number): Observable<Exercise> {
+    public getExercise(id_exercise: number) {
         return this.http.get<Exercise>(`${BASE_PATH}/getExercise/${id_exercise}`);
     }
 
