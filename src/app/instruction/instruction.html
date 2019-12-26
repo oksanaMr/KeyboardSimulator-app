@@ -1,5 +1,5 @@
 <body>
-    <div class="card col-md-6 mx-auto" style="top: 90px">
+    <div class="card col-md-6 mx-auto" style="top: 30px">
         <div class="card-body" [ngSwitch]="selectedPage">
             <ng-container *ngSwitchCase="0">
                 <h5 class="card-title">Инструкция по работе</h5>
@@ -8,19 +8,21 @@
                 <p class="card-text">В профиле Вы можете изменить уровень сложности и свои учетные данные.
                     Для изменения уровня сложности переключите маркер на вкладке «Профиль». Для изменения учетных
                     данных нажмите кнопку «Изменить данные», а затем введите новые данные в окне «Изменить данные»</p>
+                <img src="https://sun9-72.userapi.com/c857324/v857324393/95a34/RIRaFuRY7RI.jpg" class="card-img-top">    
             </ng-container>
             <ng-container *ngSwitchCase="1">
                 <h5 class="card-title">Инструкция по работе</h5>
                 <h6 class="card-title">Добро пожаловать в приложение «Клавиатурный тренажер»!</h6>
                 <p class="card-text" style="text-decoration: underline;">Упражнения:</p>
                 <p class="card-text">Для просмотра доступных на выбранном уровне сложности упражнений перейдите на
-                    вкладку «Выбор упражнения». В ней Вы можете выбрать упражнение для прохождения. Для этого выберите
+                    вкладку «Упражнения». В ней Вы можете выбрать упражнение для прохождения. Для этого выберите
                     упражнение и система отобразит его текст, количество допустимых ошибок, скорость прохождения
                     упражнения и время.
                     Чтобы начать прохождение упражнения, нажмите кнопку «Начать». Прохождение упражнения можно
                     завершить. Для этого
                     нажмите кнопку «Завершить», система выдаст сообщение о текущей статистике по данному упражнению.
                 </p>
+                <img src="https://sun9-35.userapi.com/c857324/v857324393/95a7e/4UgNN_nPcbM.jpg" class="card-img-top">
             </ng-container>
             <ng-container *ngSwitchCase="2">
                 <h5 class="card-title">Инструкция по работе</h5>
@@ -33,6 +35,7 @@
                     ошибок,
                     скоростью выполнения упражнения.
                 </p>
+                <img src="https://sun9-40.userapi.com/c857324/v857324393/95aa0/z0quK-b-G_U.jpg" class="card-img-top">
             </ng-container>
             <div class="d-flex align-items-center">
                 <a [routerLink]="['/']" class="btn btn-link mr-auto">Назад </a>
